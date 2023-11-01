@@ -10,7 +10,7 @@ info:
 tags:
 
 
-  - name: 'users'
+  - name: 'user'
     description: Get information about users
   - name: 'research'
     description: Relationships to other users outgoing and incoming
