@@ -40,6 +40,7 @@ paths:
   
         required: true
       responses:
+        
         '201': 
           description: User log-in action successfull
           content:
@@ -52,8 +53,157 @@ paths:
                     example: "abcdefgg45"
 
 
+  /users:
+    get:
+      tags: ["search"]
+      summary: Get the user profile of certian id
+      description: Get the user profile of certian id
+      operationId: getUserProfile
+
+      parameters:
+        - in: query
+          name: id
+          description: id of user that is searched
+          schema:
+            type: string 
+            pattern: '^.*?$'
+            minLength: 1
+            maxLength: 16
+            example: "Marietto88"
+          example: "marion3"
+      responses:
+
+        '200':
+            description:  The user has been found
+            content:
+              application/json: 
+                schema:
+                  description: List of users found
+                  type: object
+                  properties:
+                    users: 
+                      description: it's a list(an array) of users with a partial match with the searched id
+                      type: array
+                      minItems: 0
+                      maxItems: 10
+                      
+                      example:
+                        - user_id: marion3
+                        - user_id: Marietto88
+                        - user_id: Marlion2
+                        - user_id: martin77
+                          
+        '401':
+          $ref: "#/components/responses/Unauthorized"
+        '404':
+          $ref: "#/components/responses/NotFound"
+        '500':
+          $ref: "#/components/responses/InternalServerError"
+                      
+      security:
+        - bearerAuth: []
+  /users/{id}:
+    
+    get:
+      tags: ["user"]
+      summary: get all information of user profile
+      description: allows you to obtain the profile, with the related information
+      operationId: getProfile
 
 
+      responses:
+        '200':
+          description: All information of a profile
+          content:
+            application/json:
+              schema:
+                description: Object containing all profile information
+                type: object
+                properties:
+
+                  user_id:
+                    $ref: "#/components/schemas/nickname"
+                  
+                  followers:
+                    description: array of follower
+                    type: array
+                    minItems: 0
+                    maxItems: 999999999
+
+                  following: 
+                    description: array of followed users
+                    type: array
+                    minItems: 0
+                    maxItems: 999999999
+                  
+                  photos:
+                    description: array of photos
+                    type: array
+                    minItems: 0
+                    maxItems: 9999999999
+                    
+                  
+
+        '401':
+          $ref: "#/components/responses/Unauthorized"
+        '404':
+          $ref: "#/components/responses/NotFound"
+        '500':
+          $ref: "#/components/responses/InternalServerError"
+
+
+components:
+
+
+  responses:
+    InternalServerError:
+      description: Response linked to 500 http status (the server encountered an unexpected condition)
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+
+    Unauthorized: 
+      description: Unauthorized operation
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error' 
+
+    NotFound:
+      description: Response linked to 404 http status(the resource is not found)
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error' 
+
+
+  schemas:
+
+    nickname: 
+      description: user's nickname
+      type: object
+      properties:
+        nickname:
+          description: string between 4-18 characters
+          type: string
+          minLength: 4
+          maxLength: 16
+          pattern: '^.*?$'
+          example: "Marietto88"
+      example:
+        nickname: "Marietto88" 
+
+    Error:
+      type: object
+      properties:
+        code:
+          type: string
+        message:
+          type: string
+      required:
+        - code 
+        - message
 
  
       
