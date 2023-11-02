@@ -240,7 +240,8 @@ components:
     #Errors:
     #appunto forse è meglio definire i vari errori con relativi messaggi di output
     Forbiden:
-      description: Response linked to 403 http status()
+    
+      description: Response linked to 403 http status(403)
       content:
         application/json:
           schema: 
