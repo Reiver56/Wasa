@@ -102,6 +102,10 @@ paths:
                       
       security:
         - bearerAuth: []
+
+
+
+
   /users/{id}:
     put:
        tags: ["user"]
@@ -150,6 +154,8 @@ paths:
                   user_id:
                     $ref: "#/components/schemas/username"
                   
+
+                  #da definire-----------------------------
                   followers:
                     description: array of follower
                     type: array
@@ -167,7 +173,7 @@ paths:
                     type: array
                     minItems: 0
                     maxItems: 9999999999
-
+                  #----------------------------------------
                   
 
         '401':
@@ -177,6 +183,50 @@ paths:
         '500':
           $ref: "#/components/responses/InternalServerError"
 
+  #appunti: se per inserire una foto andiamo nel path /user/{id}/photos, per eliminare una foto dobbiamo considerare anche 
+  #l'identifier della foto --> fai un altro path
+  
+  /user/{id}/photos:
+   
+    post: 
+      tags: ["photo"]
+      summary: upload a photo
+      description: a user can upload a new photo on personal profile
+      operationId: uploadPhoto
+
+      requestBody:
+        required: true
+        content:
+          multipart/from-data:
+            schema: 
+              $ref: "#/components/schemas/photo"
+            example:
+              file: "1010101010"
+
+        
+
+
+
+      responses:
+        '200':
+          description: the photo has been uploaded
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: the photo was uploaded successfully
+
+        '403': 
+          $ref: "#/components/responses/Forbiden"
+
+        '401':
+          $ref: "#/components/responses/Unauthorized"
+
+        '500':
+          $ref: "#/components/responses/InternalServerError"
 
 components:
 
@@ -188,6 +238,14 @@ components:
     
     
     #Errors:
+    #appunto forse è meglio definire i vari errori con relativi messaggi di output
+    Forbiden:
+      description: Response linked to 403 http status()
+      content:
+        application/json:
+          schema: 
+           $ref: '#/components/schemas/Error'
+
     InternalServerError:
       description: Response linked to 500 http status (the server encountered an unexpected condition)
       content:
@@ -211,6 +269,19 @@ components:
 
 
   schemas:
+    photo: 
+      description: define a photo
+      type: object
+      properties:
+        file:
+          type: string 
+          format: binary
+          minLength: 0
+          maxLength: 999
+          example: "1010101010"
+      example: 
+        file: "1010101010"
+        
 
     username: 
       description: username
