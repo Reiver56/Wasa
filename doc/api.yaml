@@ -218,6 +218,10 @@ paths:
                   message:
                     type: string
                     example: the photo was uploaded successfully
+                  photo_identifier:
+                    $ref: "#/components/parameters/photo_id" #rilascio dell'id della foto cosa che mi serve poi per fare altre azioni 
+
+
 
         '403': 
           $ref: "#/components/responses/Forbiden"
@@ -228,8 +232,69 @@ paths:
         '500':
           $ref: "#/components/responses/InternalServerError"
 
+  /user/{id}/photos/{photo_identifier}: 
+    #inserire l'eliminazione della foto
+    delete:
+      tags: ["photo"]
+      description: delete a photo
+      operationId: deletePhoto  
+
+      responses:
+        '200':
+          description: OK message
+          content:
+            application/json:
+              schema: 
+                type: string
+                example: the photo was deleted successfully
+           
+        
+        '403': 
+          $ref: "#/components/responses/Forbiden"
+
+        '401':
+          $ref: "#/components/responses/Unauthorized"
+
+        '500':
+          $ref: "#/components/responses/InternalServerError"
+
+  /user/{id}/photos/{photo_identifier}/comments:
+
+
+    post:
+      tags: ["photo"]
+      description: comment a photo
+      operationId: commentPhoto
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:   
+              $ref: "#/components/schemas/comment"
+
+          
+      responses:
+        '200':
+          description: return a identifier of photo 
+
+
+
+
 components:
 
+
+  parameters:
+    photo_id:
+      name: photo identifier
+      in: path
+      
+      required: true
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 999
+        example: 281
+        readOnly: true
 
   responses:
     #other type of responses
@@ -240,6 +305,7 @@ components:
     #Errors:
     #appunto forse è meglio definire i vari errori con relativi messaggi di output
     Forbiden:
+      
     
       description: Response linked to 403 http status(403)
       content:
@@ -270,6 +336,23 @@ components:
 
 
   schemas:
+    comment: 
+      description: define a comment
+      type: object
+      properties:
+        username: 
+          $ref: "#/components/schemas/username/properties/nickname"
+          
+        comments:
+          type: string
+          minLength: 3
+          maxLength: 100
+          example: bella foto, come stai?
+      example: bella foto, dove sei?
+
+    
+        
+
     photo: 
       description: define a photo
       type: object
@@ -285,6 +368,7 @@ components:
         
 
     username: 
+      
       description: username
       type: object
       properties:
