@@ -44,7 +44,8 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/parameters/id" #identifier return
-
+      security:
+        - bearerAuth: []
 
   /users:
     get:
@@ -105,7 +106,7 @@ paths:
        summary: modifies the username
        description: allows the user to modify personal username
        operationId: setMyUserName
-
+       
        requestBody:
           content:
             application/json:
@@ -123,7 +124,10 @@ paths:
           $ref: "#/components/responses/NotFound"
         '500':
           $ref: "#/components/responses/InternalServerError"
-
+      
+       security:
+         - bearerAuth: []
+       
 
        
      
@@ -154,18 +158,24 @@ paths:
                     type: array
                     minItems: 0
                     maxItems: 999999999
+                    items: 
+                      $ref: "#/components/schemas/username"
 
                   following: 
                     description: array of followed users
                     type: array
                     minItems: 0
                     maxItems: 999999999
+                    items:  
+                      $ref: "#/components/schemas/username"
                   
                   photos:
                     description: array of photos
                     type: array
                     minItems: 0
                     maxItems: 9999999999
+                    items:  
+                      $ref: "#/components/schemas/complete_photo"
                   #----------------------------------------
                   
 
@@ -175,6 +185,9 @@ paths:
           $ref: "#/components/responses/NotFound"
         '500':
           $ref: "#/components/responses/InternalServerError"
+      
+      security:
+        - bearerAuth: []
 
   #appunti: se per inserire una foto andiamo nel path /user/{id}/photos, per eliminare una foto dobbiamo considerare anche 
   #l'identifier della foto --> fai un altro path
@@ -204,7 +217,9 @@ paths:
           $ref: "#/components/responses/NotFound"
         '500':
           $ref: "#/components/responses/InternalServerError"
-
+      
+      security:
+        - bearerAuth: []
 
   /user/{id}/photos:
    
@@ -251,6 +266,9 @@ paths:
 
         '500':
           $ref: "#/components/responses/InternalServerError"
+     
+      security:
+        - bearerAuth: []
 
   /user/{id}/photos/{photo_id}: 
     
@@ -279,6 +297,9 @@ paths:
 
         '500':
           $ref: "#/components/responses/InternalServerError"
+      
+      security:
+        - bearerAuth: []
 
   /user/{id}/photos/{photo_id}/comments:
     
@@ -303,7 +324,9 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/comment_id"
-
+      
+      security:
+        - bearerAuth: []
   
   
   /user/{id}/photos/{photo_id}/comments/{comment_id}:
@@ -330,6 +353,9 @@ paths:
         '500':
           $ref: "#/components/responses/InternalServerError"
 
+      security:
+        - bearerAuth: []
+
   /user/{id}/photos/{photo_id}/likes:
 
     put:
@@ -355,7 +381,10 @@ paths:
 
         '500':
           $ref: "#/components/responses/InternalServerError" 
-  
+      
+      security:
+        - bearerAuth: []
+
   /user/{id}/photos/{photo_id}/likes/{like_id}:
     
     delete:
@@ -376,6 +405,9 @@ paths:
 
         '500':
           $ref: "#/components/responses/InternalServerError"
+      
+      security:
+        - bearerAuth: []
 
   /user/{id}/banned_users:
 
@@ -403,7 +435,8 @@ paths:
         '500':
           $ref: "#/components/responses/InternalServerError"
 
-  
+      security:
+        - bearerAuth: []
   
   /user/{id}/banned_users/{user_banned_id}:
     
@@ -427,7 +460,9 @@ paths:
 
         '500':
           $ref: "#/components/responses/InternalServerError"
-  
+    
+      security:
+        - bearerAuth: []
   #follow e unfollow
   /user/{id}/followed:
     put:
@@ -454,7 +489,9 @@ paths:
 
         '500':
           $ref: "#/components/responses/InternalServerError"
-
+      
+      security:
+        - bearerAuth: []
  
  
   /user/{id}/followed/follow_id:
@@ -477,7 +514,9 @@ paths:
 
         '500':
           $ref: "#/components/responses/InternalServerError"
-        
+      
+      security:
+        - bearerAuth: []    
 
 
 #==========================================================================================
@@ -613,7 +652,7 @@ components:
           $ref: "#/components/schemas/comment/properties/comment"
       example:
         - comment_id: 112
-        - username: RufyDMonkey11
+        - username: Monkey.D.Luffy11
         - comment: "wow, dove sei??"
         
 
@@ -718,8 +757,12 @@ components:
       required:
         - code 
         - message
-
- 
+        
+#---------------------------------------------------------------------------------------
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
       
         
             
