@@ -428,6 +428,57 @@ paths:
         '500':
           $ref: "#/components/responses/InternalServerError"
   
+  #follow e unfollow
+  /user/{id}/followed:
+    put:
+      tags: ["follow"]
+      description: |- 
+        a user can follow another user, so they will 
+        be added to the following list, with a relative follow_id
+      summary: a user follow another user
+      operationId: followUser
+
+      responses:
+        '200':
+          description: Ok message, with return of follow identifier
+          content:
+            application/json:
+              schema:   
+                $ref: "#/components/parameters/follow_id"
+         
+        '403': 
+          $ref: "#/components/responses/Forbiden"
+
+        '401':
+          $ref: "#/components/responses/Unauthorized"
+
+        '500':
+          $ref: "#/components/responses/InternalServerError"
+
+ 
+ 
+  /user/{id}/followed/follow_id:
+    delete:
+      tags: ["follow"]
+      description: |-
+        a user can delete (unfollow) another user of his
+        following list
+      summary: a user unfollow another user
+
+      responses:
+        '200':
+          description: User was unfollow successfully
+
+        '403': 
+          $ref: "#/components/responses/Forbiden"
+
+        '401':
+          $ref: "#/components/responses/Unauthorized"
+
+        '500':
+          $ref: "#/components/responses/InternalServerError"
+        
+
 
 #==========================================================================================
 components:
@@ -468,6 +519,13 @@ components:
         minimum: 1
         maximum: 999
         example: 13
+    
+    follow_id:
+      name: user follow idenfier
+      in: path
+      required: true
+      schema:
+        $ref: "#/components/schemas/username/properties/nickname"
 
     user_banned_id:
       name: user banned identifier
@@ -478,7 +536,7 @@ components:
 
 
 
-
+  #-------------------------------------------------------------------------------------
   responses:
     #other type of responses
     NoContent:
@@ -486,7 +544,7 @@ components:
     
     
     #Errors:
-    #appunto forse è meglio definire i vari errori con relativi messaggi di output
+    #forse è meglio definire i vari errori con relativi messaggi di output
     Forbiden:
       
     
@@ -517,8 +575,10 @@ components:
           schema:
             $ref: '#/components/schemas/Error' 
 
-
+  #-------------------------------------------------------------------------------------
   schemas:
+    
+
     complete_like:
       description: define all information of like
       type: object
