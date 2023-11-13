@@ -1,7 +1,6 @@
 module Wasa-photo-1905917
 
-go 1.17
-
+go 1.2
 require (
 	github.com/ardanlabs/conf v1.5.0
 	github.com/gorilla/handlers v1.5.1
