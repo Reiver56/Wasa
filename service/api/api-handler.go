@@ -9,5 +9,5 @@ func (rt *_router) Handler() http.Handler {
 	// Endpoints:
 	// -----------
 	// Login
-	
+	return rt.router 
 }
