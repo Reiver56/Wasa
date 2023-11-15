@@ -512,8 +512,8 @@ paths:
         - bearerAuth: []
   
   /user/{id}/followed:
+     parameters:
 
-    parameters:
      - $ref: "#/components/parameters/id"
      
 
@@ -547,11 +547,6 @@ paths:
  
  
   /user/{id}/followed/{follow_id}:
-  
-    parameters:
-     - $ref: "#/components/parameters/id"
-     - $ref: "#/components/parameters/follow_id"
-
     delete:
       tags: ["follow"]
       description: |-

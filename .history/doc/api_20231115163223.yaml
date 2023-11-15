@@ -547,7 +547,6 @@ paths:
  
  
   /user/{id}/followed/{follow_id}:
-  
     parameters:
      - $ref: "#/components/parameters/id"
      - $ref: "#/components/parameters/follow_id"

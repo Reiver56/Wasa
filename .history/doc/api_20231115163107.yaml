@@ -486,7 +486,7 @@ paths:
     parameters:
 
      - $ref: "#/components/parameters/id"
-     - $ref: "#/components/parameters/user_banned_id"
+     - $ref: "#/components/parameters/"
     
     delete:
 
@@ -512,11 +512,6 @@ paths:
         - bearerAuth: []
   
   /user/{id}/followed:
-
-    parameters:
-     - $ref: "#/components/parameters/id"
-     
-
     put:
       tags: ["follow"]
       description: |- 
@@ -547,11 +542,6 @@ paths:
  
  
   /user/{id}/followed/{follow_id}:
-  
-    parameters:
-     - $ref: "#/components/parameters/id"
-     - $ref: "#/components/parameters/follow_id"
-
     delete:
       tags: ["follow"]
       description: |-

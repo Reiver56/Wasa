@@ -421,12 +421,11 @@ paths:
         - bearerAuth: []
 
   /user/{id}/photos/{photo_id}/likes/{like_id}:
-
     parameters:
 
      - $ref: "#/components/parameters/id"
      - $ref: "#/components/parameters/photo_id"
-     - $ref: "#/components/parameters/like_id"
+     - $ref: "#/components/parameters/comment_id"
     
     delete:
       tags: ["like"]
@@ -452,9 +451,6 @@ paths:
 
   /user/{id}/banned_users:
 
-    parameters:
-     - $ref: "#/components/parameters/id"
-     
     put:
       tags: ["ban"]
       summary: a user can ban another user's account
@@ -483,10 +479,7 @@ paths:
         - bearerAuth: []
   
   /user/{id}/banned_users/{user_banned_id}:
-    parameters:
-
-     - $ref: "#/components/parameters/id"
-     - $ref: "#/components/parameters/user_banned_id"
+    
     
     delete:
 
@@ -512,11 +505,6 @@ paths:
         - bearerAuth: []
   
   /user/{id}/followed:
-
-    parameters:
-     - $ref: "#/components/parameters/id"
-     
-
     put:
       tags: ["follow"]
       description: |- 
@@ -547,11 +535,6 @@ paths:
  
  
   /user/{id}/followed/{follow_id}:
-  
-    parameters:
-     - $ref: "#/components/parameters/id"
-     - $ref: "#/components/parameters/follow_id"
-
     delete:
       tags: ["follow"]
       description: |-
