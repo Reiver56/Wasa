@@ -5,6 +5,8 @@ info:
     The following APIs are for Wasa's first Homework
   version: "1.1.0"
 
+#versione 1.2 -> aggiustare errori
+#versione 1.3 -> sistemare dividendo bene i vari path e components
 
 tags:
   - name: "login"
@@ -116,14 +118,8 @@ paths:
                     users: 
                       description: it's a list(an array) of users with a partial match with the searched id
                       type: array
-                      minItems: 0
-                      maxItems: 10
-                      
-                      example:
-                        - user_id: marion3
-                        - user_id: Marietto88
-                        - user_id: Marlion2
-                        - user_id: martin77
+                      items:
+                        $ref: "#/components/schemas/user_nickname/properties/nickname"
                           
         '401':
           $ref: "#/components/responses/Unauthorized"
@@ -139,7 +135,7 @@ paths:
 
 
   /users/{id}:
-
+  
     parameters:
       - $ref: "#/components/parameters/id"
 
@@ -547,7 +543,7 @@ paths:
  
  
   /user/{id}/followed/{follow_id}:
-  
+
     parameters:
      - $ref: "#/components/parameters/id"
      - $ref: "#/components/parameters/follow_id"
@@ -581,21 +577,9 @@ components:
 
 
   parameters:
-
-    comment_id:
-      name: comment identifier
-      in: path
-      
-      required: true
-      schema:
-        type: integer
-        minimum: 1
-        maximum: 999
-        example: 281
-        readOnly: true
-
+  
     id: 
-      name: user idetifier
+      name: id
       in: path
       required: true
       schema:
@@ -604,12 +588,24 @@ components:
        maxLength: 16
        example: Maria667
        pattern: '^[a-zA-Z0-9]+$'
+
+    comment_id:
+      name: comment_id
+      in: path
+      required: true
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 999
+        example: 281
+        readOnly: true
+
+    
        
 
     photo_id:
-      name: photo identifier
+      name: photo_id
       in: path
-      
       required: true
       schema:
         type: integer
@@ -619,7 +615,7 @@ components:
         readOnly: true
 
     like_id:
-      name: like identifier
+      name: like_id
       in: path
       required: true
       schema:
@@ -629,14 +625,14 @@ components:
         example: 13
     
     follow_id:
-      name: user follow idenfier
+      name: follow_id
       in: path
       required: true
       schema:
         $ref: "#/components/schemas/username"
 
     user_banned_id:
-      name: user banned identifier
+      name: user_banned_id
       in: path
       required: true
       schema:
