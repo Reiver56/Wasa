@@ -1,0 +1,8 @@
+package database
+
+var sql_TABLEUSER = `CREATE TABLE IF NOT EXISTS User
+(
+	userID INTEGER NOT NULL UNIQUE,
+	username STRING NOT NULL UNIQUE,
+	PRIMARY KEY(userID)
+);`

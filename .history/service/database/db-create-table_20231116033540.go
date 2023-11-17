@@ -1,0 +1,10 @@
+package database
+
+var sql_TABLEUSER = `CREATE TABLE IF NOT EXISTS User
+(
+	userID INTEGER NOT NULL UNIQUE,
+	username STRING NOT NULL UNIQUE,
+	bio TEXT,
+	timestamp DATETIME DEFAULT CURRENT_TIMESTAMP,
+	PRIMARY KEY(userID)
+);`
