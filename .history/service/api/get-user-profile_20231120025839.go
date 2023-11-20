@@ -3,17 +3,20 @@ package api
 import (
 	"Wasa-photo-1905917/service/api/reqcontext"
 	"encoding/json"
+	
+
 	"net/http"
+
 	"github.com/julienschmidt/httprouter"
 )
 
 func (rt *_router) searchUser(w http.ResponseWriter, r *http.Request, ps httprouter.Params, ctx reqcontext.RequestContext) {
 	w.Header().Set("Content-type", "application/json")
-	identificator := r.URL.Query().Get("search")
+	identifier := r.URL.Query().Get("id")
 	
-	identifier := r.Header.Get("Authorization")
+	identificator := extractBearerToken(r.Header.Get("Authorization"))
 	
-	if identifier == "" {
+	if identificator == "" {
 		w.WriteHeader(http.StatusForbidden)
 		ctx.Logger.Errorf("user not logged in")
 		return
