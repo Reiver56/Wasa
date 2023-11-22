@@ -1,7 +1,7 @@
 package database
 
 
-//---------User Table----------------
+//  ---------User Table----------------
 
 var select {
 case condition:

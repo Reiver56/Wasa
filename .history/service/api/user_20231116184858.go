@@ -5,7 +5,7 @@ import (
 	"regexp"
 )
 
-//define structure of user object with all information
+//  define structure of user object with all information
 type User_ID struct{
 	ID string `json:"id"`
 }
@@ -21,7 +21,7 @@ type User struct {
 	nickname string `json:"nickname"`
 }
 
-//covert user in api package in database package
+//  covert user in api package in database package
 func (u *User) ToDatabase() database.User{
 	return database.User{
 		ID: u.ID,
@@ -51,7 +51,7 @@ func (u *User) FromDatabase(User database.User) error{
 }
 
 
-// check identifier and password with regex
+//   check identifier and password with regex
 func (u *User) isValidID() bool{
 	identifier := u.ID
 	

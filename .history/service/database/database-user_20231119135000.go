@@ -8,10 +8,10 @@ import (
 
 
 
-//Database fuction that add a new user in database
+//  Database fuction that add a new user in database
 func (db *appdbimpl) CreateUser(u User) error {
 	
-	//-------INSERT USER IN DATABASE-------
+	//  -------INSERT USER IN DATABASE-------
 	_, err := db.c.Exec(`INSERT INTO users (id, nickname) VALUES(?, ?)`, u.ID, u.Nickname)
 	if err != nil {
 		fmt.Println("Error inserting user in database")
@@ -22,7 +22,7 @@ func (db *appdbimpl) CreateUser(u User) error {
 	
 }
 
-//Check if user exist in database
+//  Check if user exist in database
 func (db *appdbimpl) ExistUser(nickname string) (bool, error) {
 	var existUser string
 	err := db.c.QueryRow(`SELECT nickname FROM users WHERE nickname = ?`, nickname).Scan(&existUser)
@@ -34,14 +34,14 @@ func (db *appdbimpl) ExistUser(nickname string) (bool, error) {
 }
 
 var query_GETUSER = `SELECT nickname FROM users WHERE nickname = ?`
-//Get user object from database
+//  Get user object from database
 func (db *appdbimpl) GetUser(username string) (User, error) {
 	var user User
 	err := db.c.QueryRow(query_GETUSER, username).Scan(&user.Nickname)
 	return user, err
 }
 
-//Fuction that modifies a user's username
+//  Fuction that modifies a user's username
 func (db *appdbimpl) SetNewUsername(userID string, username string) error {
 
 	_, err := db.c.Exec(`UPDATE users SET nickname = ? WHERE id = ?`, username, userID)

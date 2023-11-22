@@ -9,7 +9,7 @@ var query_FINDUSER = `SELECT ID AND password FROM User WHERE ID = ? `
 var query_GETUSER = `SELECT id AND  FROM User WHERE id = ?`
 
 
-//Database fuction that add a new user in database 
+//  Database fuction that add a new user in database 
 func (db *appdbimpl) CreateUser(username string) (error){
 	
 	_, err := db.c.Exec("INSERT INTO users (id) VALUES (?,?), id")
@@ -19,7 +19,7 @@ func (db *appdbimpl) CreateUser(username string) (error){
 	}
 	return nil
 }
-//Check if user exist in database
+//  Check if user exist in database
 func (db *appdbimpl) ExistUser(username string) (bool, error){
 	var existUser string
 	err := db.c.QueryRow(query_FINDUSER, username).Scan(&existUser)
@@ -28,7 +28,7 @@ func (db *appdbimpl) ExistUser(username string) (bool, error){
 		}
 	return existUser != "",err	 
 }
-//Get user object from database
+//  Get user object from database
 
 func (db *appdbimpl) GetUser(username string) (User, error){
 	var user User
@@ -36,7 +36,7 @@ func (db *appdbimpl) GetUser(username string) (User, error){
 	return user, err
 }
 
-//Fuction that modifies a user's username
+//  Fuction that modifies a user's username
 func (db *appdbimpl) SetNewUsername(user User_ID, username string) (error){
 	
 	_, err := db.c.Exec(`UPDATE users SET ID=?, user.ID`)

@@ -11,7 +11,7 @@ type Like struct{
 	ID_user string `json:"id_user"`
 }
 
-//
+//  
 type Comment struct{
 	ID_comment int `json:"id"`
 	ID_user string `json:"is_user"`

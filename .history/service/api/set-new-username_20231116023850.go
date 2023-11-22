@@ -16,7 +16,7 @@ func (rt *_router) setMyUserName(w http.ResponseWriter, r *http.Request, ps http
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	//get new username
+	//  get new username
 	var user _User
 
 	err = json.NewDecoder(r.Body).Decode(&user)

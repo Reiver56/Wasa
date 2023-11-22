@@ -3,11 +3,11 @@ package database
 
 
  This file contains the SQL queries to create the tables for the application's database.
-// The tables include users, profile, and photo, each with their respective columns.
+//   The tables include users, profile, and photo, each with their respective columns.
  The queries are written in SQL and stored as string variables.
 
 
-//---------User Table----------------
+//  ---------User Table----------------
 
 var UserTable = `CREATE TABLE IF NOT EXISTS users 
 (
@@ -15,7 +15,7 @@ var UserTable = `CREATE TABLE IF NOT EXISTS users
 		nickname TEXT 
 );`
 
-//---------Profile Table--------------
+//  ---------Profile Table--------------
 
 var ProfileTable = `CREATE TABLE IF NOT EXISTS profile
 (
@@ -26,7 +26,7 @@ var ProfileTable = `CREATE TABLE IF NOT EXISTS profile
 		photos TEXT
 );`
 
-//---------Photo Table----------------
+//  ---------Photo Table----------------
 
 var PhotoTable = `CREATE TABLE IF NOT EXISTS photo
 (

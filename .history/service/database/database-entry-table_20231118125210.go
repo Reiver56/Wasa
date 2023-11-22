@@ -8,7 +8,7 @@ package database
 
 */
 
-//---------User Table----------------
+//  ---------User Table----------------
 
 var UserTable = `CREATE TABLE IF NOT EXISTS users 
 (
@@ -17,7 +17,7 @@ var UserTable = `CREATE TABLE IF NOT EXISTS users
 );`
 
 
-//---------Photo Table----------------
+//  ---------Photo Table----------------
 
 var PhotoTable = `CREATE TABLE IF NOT EXISTS photo
 (
@@ -27,14 +27,14 @@ var PhotoTable = `CREATE TABLE IF NOT EXISTS photo
 		FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 );`
 
-//---------Like Table----------------
+//  ---------Like Table----------------
 
 var LikeTable = `CREATE TABLE IF NOT EXISTS likes
 (
 		id_photo INTEGER NOT NULL,
 );`
 
-//---------Comment Table----------------
+//  ---------Comment Table----------------
 
 var CommentTable = `CREATE TABLE IF NOT EXISTS comments
 (
@@ -44,7 +44,7 @@ var CommentTable = `CREATE TABLE IF NOT EXISTS comments
 		comment TEXT
 );`
 
-//---------Follow Table----------------
+//  ---------Follow Table----------------
 
 var FollowTable = `CREATE TABLE IF NOT EXISTS follow
 (
@@ -53,7 +53,7 @@ var FollowTable = `CREATE TABLE IF NOT EXISTS follow
 		following TEXT
 );`
 
-//---------Ban Table----------------
+//  ---------Ban Table----------------
 
 var BanTable = `CREATE TABLE IF NOT EXISTS ban
 (

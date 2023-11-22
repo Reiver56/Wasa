@@ -1,6 +1,6 @@
 package database
 
-//create a like in database
+//  create a like in database
 func (db *appdbimpl) likePhoto(like Like) error {
 	
 	_, err := db.c.Exec(`INSERT INTO likes(id_photo, id_user) VALUES(?, ?)`, like.ID_like, like.ID_user)
@@ -10,7 +10,7 @@ func (db *appdbimpl) likePhoto(like Like) error {
 	return nil
 
 }
-//delete a like in database
+//  delete a like in database
 func (db *appdbimpl) unlikePhoto(like Like) error {
 	
 	_, err := db.c.Exec(`DELETE FROM likes WHERE id_photo = ? AND id_user = ?`, like.ID_like, like.ID_user)

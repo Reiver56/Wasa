@@ -8,7 +8,7 @@ import (
 var query_FINDUSER = `SELECT ID AND password FROM User WHERE ID = ? AND password = ?`
 var query_GETUSER = ``
 
-//Database fuction that add a new user in database 
+//  Database fuction that add a new user in database 
 func (db *appdbimpl) CreateUser(username string, password string) error{
 	_, err := db.c.Exec("INSERT INTO users (username,password) VALUES (?,?), username, password")
 

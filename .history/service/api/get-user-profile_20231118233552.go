@@ -16,7 +16,7 @@ func (rt *_router) searchUser(w http.ResponseWriter, r *http.Request, ps httprou
 		w.WriteHeader(http.StatusBadRequest)
 		return
 	}
-	//check if the nickname is valid
+	//  check if the nickname is valid
 	
 	profiles, err := rt.db.GetUserProfile( , User{Nickname: r.URL.Query().Get("nickname")})
 	

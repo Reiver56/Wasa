@@ -9,6 +9,6 @@ import (
 
 func (rt *_router) getUserProfile(w http.ResponseWriter, r *http.Request, ps httprouter.Params, ctx reqcontext.RequestContext) {
 	w.Header().Set("Content-type", "application/json")
-	var user User // Create a User object to hold the data from the request
+	var user User //   Create a User object to hold the data from the request
 	err := json.NewDecoder(r.Body).Decode(&user.Nickname)
 }

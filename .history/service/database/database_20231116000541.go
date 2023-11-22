@@ -14,7 +14,7 @@ main.WebAPIConfiguration structure):
 
 This is an example on how to migrate the DB and connect to it:
 
-	// Start Database
+	//   Start Database
 	logger.Println("initializing database support")
 	db, err := sql.Open("sqlite3", "./foo.db")
 	if err != nil {
@@ -37,12 +37,12 @@ import (
 	"fmt"
 )
 
-// AppDatabase is the high level interface for the DB
+//   AppDatabase is the high level interface for the DB
 type AppDatabase interface {
 
-	//Return true if user exists, false otherwise
+	//  Return true if user exists, false otherwise
 	existUser(username string, password string) (bool, error)
-	//Ping the database to check if is alive
+	//  Ping the database to check if is alive
 	Ping() error
 }
 
@@ -51,14 +51,14 @@ type appdbimpl struct {
 	ctx conte
 }
 
-// New returns a new instance of AppDatabase based on the SQLite connection `db`.
-// `db` is required - an error will be returned if `db` is `nil`.
+//   New returns a new instance of AppDatabase based on the SQLite connection `db`.
+//   `db` is required - an error will be returned if `db` is `nil`.
 func New(db *sql.DB) (AppDatabase, error) {
 	if db == nil {
 		return nil, errors.New("database is required when building a AppDatabase")
 	}
 
-	// Check if table exists. If not, the database is empty, and we need to create the structure
+	//   Check if table exists. If not, the database is empty, and we need to create the structure
 	var tableName string
 	err := db.QueryRow(`SELECT name FROM sqlite_master WHERE type='table' AND name='example_table';`).Scan(&tableName)
 	if errors.Is(err, sql.ErrNoRows) {

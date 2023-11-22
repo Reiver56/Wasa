@@ -14,7 +14,7 @@ main.WebAPIConfiguration structure):
 
 This is an example on how to migrate the DB and connect to it:
 
-	// Start Database
+	//   Start Database
 	logger.Println("initializing database support")
 	db, err := sql.Open("sqlite3", "./foo.db")
 	if err != nil {
@@ -37,19 +37,19 @@ import (
 	"fmt"
 )
 
-// AppDatabase is the high level interface for the DB
+//   AppDatabase is the high level interface for the DB
 type AppDatabase interface {
 
-	//Return true if user exists, false otherwise
+	//  Return true if user exists, false otherwise
 	ExistUser(username string) (bool, error)
-	//Create a new User in the DB
+	//  Create a new User in the DB
 	CreateUser(username string) (error)
-	//Get a user (id and pw)
+	//  Get a user (id and pw)
 	GetUser(username string) (User, error)
 	
-	//Modify user's username
+	//  Modify user's username
 	SetNewUsername(User User_ID, username string) (error)
-	//Ping the database to check if is alive
+	//  Ping the database to check if is alive
 	
 	Ping() error
 }
@@ -57,14 +57,14 @@ type appdbimpl struct {
 	c *sql.DB
 	ctx context.Context
 }
-// New returns a new instance of AppDatabase based on the SQLite connection `db`.
-// `db` is required - an error will be returned if `db` is `nil`.
+//   New returns a new instance of AppDatabase based on the SQLite connection `db`.
+//   `db` is required - an error will be returned if `db` is `nil`.
 func New(db *sql.DB) (AppDatabase, error) {
 	if db == nil {
 		return nil, errors.New("database is required when building a AppDatabase")
 	}
 
-	// Check if table exists. If not, the database is empty, and we need to create the structure
+	//   Check if table exists. If not, the database is empty, and we need to create the structure
 	var tableName string
 	var tableCount uint8
 	err := db.QueryRow(`SELECT count(name) FROM sqlite_master WHERE type='table';`).Scan(&tableCount)
@@ -79,7 +79,7 @@ func New(db *sql.DB) (AppDatabase, error) {
 	
 	if tableCount != 6 {
 
-		// ---CREATE USER TABLE----//
+		//   ---CREATE USER TABLE----//  
 		_, err = db.Exec(sql_TABLEUSER)
 		if err != nil {
 			return nil, fmt.Errorf("error creating database structure: %w", err)

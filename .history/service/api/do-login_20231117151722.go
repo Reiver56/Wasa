@@ -20,23 +20,23 @@ If the user doesn't exist, it creates a new user and returns it.
 func (rt *_router) doLogin(w http.ResponseWriter, r *http.Request, ps httprouter.Params, ctx reqcontext.RequestContext) {
 
 	w.Header().Set("Content-type", "application/json")
-	var user User // Create a User object to hold the data from the request
+	var user User //   Create a User object to hold the data from the request
 	
-	// Decode JSON from the request body into the User object
+	//   Decode JSON from the request body into the User object
 	err := json.NewDecoder(r.Body).Decode(&user)
 
-	// Check for JSON decoding errors
+	//   Check for JSON decoding errors
 	if err != nil {
 		w.WriteHeader(http.StatusBadRequest)
 		return
 	} 
 
-	if !user.isValidID() { // Validate User ID
+	if !user.isValidID() { //   Validate User ID
 		w.WriteHeader(http.StatusBadRequest)
 		return
 	}
 
-	//Check if user exist and return them, if not exist create a new user
+	//  Check if user exist and return them, if not exist create a new user
 
 	exist, err := rt.db.ExistUser(user.Nickname)
 	if err != nil {
@@ -73,6 +73,6 @@ func (rt *_router) doLogin(w http.ResponseWriter, r *http.Request, ps httprouter
 
 	}
 	
-	//if not exists
+	//  if not exists
 
 }

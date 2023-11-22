@@ -11,12 +11,12 @@ import (
 
 func (rt *_router) getUserProfile(w http.ResponseWriter, r *http.Request, ps httprouter.Params, ctx reqcontext.RequestContext) {
 	w.Header().Set("Content-type", "application/json")
-	var user User // Create a User object to hold the data from the request
+	var user User //   Create a User object to hold the data from the request
 	err := json.NewDecoder(r.Body).Decode(&user)
 	if err != nil {
 		w.WriteHeader(http.StatusBadRequest)
 		return
-	} else if !user.isValidID() { // Validate User ID
+	} else if !user.isValidID() { //   Validate User ID
 	fmt.Println(user, "   ", err)
 
 

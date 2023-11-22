@@ -1,2 +1,2 @@
-//creare delle tabelle per ogni entry in sqlite
+//  creare delle tabelle per ogni entry in sqlite
 

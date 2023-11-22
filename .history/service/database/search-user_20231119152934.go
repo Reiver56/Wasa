@@ -2,7 +2,7 @@ package database
 
 import "fmt"
 
-//return a list of matching users with u2 (that is the user that is searching)
+//  return a list of matching users with u2 (that is the user that is searching)
 func (db *appdbimpl) GetUserProfile(u1 User, u2 User) ([]Profile, error) {
 	
 	

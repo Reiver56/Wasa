@@ -4,24 +4,24 @@ import (
 	"net/http"
 )
 
-// Handler returns an instance of httprouter.Router that handle APIs registered here
+//   Handler returns an instance of httprouter.Router that handle APIs registered here
 func (rt *_router) Handler() http.Handler {
-	// Endpoints:
-	// -----------
+	//   Endpoints:
+	//   -----------
 	
-	//-----doLogin--------------------------
+	//  -----doLogin--------------------------
 	rt.router.POST("/login",rt.wrap(rt.doLogin))
 	
-	//------getUserProfile--------------------------------
+	//  ------getUserProfile--------------------------------
 	rt.router.GET("/users",rt.wrap(rt.searchUser))
 	
-	//-----setMyUserName-------------------
+	//  -----setMyUserName-------------------
 	rt.router.PUT("/users/:id",rt.wrap(rt.setMyUserName))
 
-	//-----banUser--------------------------
+	//  -----banUser--------------------------
 	rt.router.PUT("/users/:id/ban",rt.wrap(rt.banUser))
 
-	//-----unbanUser--------------------------
+	//  -----unbanUser--------------------------
 	rt.router.DELETE("/users/:id/ban",rt.wrap(rt.unbanUser))
 	
 	return rt.router 

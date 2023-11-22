@@ -1,1 +1,1 @@
-//crreare delle tabelle per og
+//  crreare delle tabelle per og

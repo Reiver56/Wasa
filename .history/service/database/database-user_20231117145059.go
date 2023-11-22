@@ -9,19 +9,19 @@ import (
 
 var query_GETUSER = `SELECT id FROM User WHERE id = ?`
 
-//Database fuction that add a new user in database
+//  Database fuction that add a new user in database
 func (db *appdbimpl) CreateUser(user User) (User, error) {
 	var u User
 	u.Nickname = user.Nickname
 
-	//check if exist user id
+	//  check if exist user id
 	row, err := db.c.Query(`INSERT INTO users (nickname) VALUES (?)`, user.Nickname)
 
 
 	
 }
 
-//Check if user exist in database
+//  Check if user exist in database
 func (db *appdbimpl) ExistUser(nickname string) (bool, error) {
 	var existUser string
 	err := db.c.QueryRow(`SELECT nickname FROM users WHERE nickname = ? `, nickname).Scan(&existUser)
@@ -32,7 +32,7 @@ func (db *appdbimpl) ExistUser(nickname string) (bool, error) {
 	
 }
 
-//Get user object from database
+//  Get user object from database
 
 func (db *appdbimpl) GetUser(username string) (User, error) {
 	var user User
@@ -40,7 +40,7 @@ func (db *appdbimpl) GetUser(username string) (User, error) {
 	return user, err
 }
 
-//Fuction that modifies a user's username
+//  Fuction that modifies a user's username
 func (db *appdbimpl) SetNewUsername(user User_ID, username string) error {
 
 	_, err := db.c.Exec(`UPDATE User SET ID=?, user.ID`)

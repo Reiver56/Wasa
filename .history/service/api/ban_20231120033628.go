@@ -8,7 +8,7 @@ import (
 	"github.com/julienschmidt/httprouter"
 )
 
-// Function that set a new user's nickname
+//   Function that set a new user's nickname
 func (rt *_router) banUser(w http.ResponseWriter, r *http.Request, ps httprouter.Params, ctx reqcontext.RequestContext) {
 	
 	banner := ps.ByName("id")
@@ -24,7 +24,7 @@ func (rt *_router) banUser(w http.ResponseWriter, r *http.Request, ps httprouter
 		ctx.Logger.Errorf("user cannot ban himself")
 		return
 	}
-	//define banner (with b1) and banned (with b)
+	//  define banner (with b1) and banned (with b)
 	var b1 User
 	var b2 User
 	b1.ID = banner

@@ -6,7 +6,7 @@ package database
  The queries are written in SQL and stored as string variables.
 
 
-//---------User Table----------------
+//  ---------User Table----------------
 
 var UserTable = `CREATE TABLE IF NOT EXISTS users 
 (
@@ -14,7 +14,7 @@ var UserTable = `CREATE TABLE IF NOT EXISTS users
 		nickname TEXT 
 );`
 
-//---------Profile Table--------------
+//  ---------Profile Table--------------
 
 var ProfileTable = `CREATE TABLE IF NOT EXISTS profile
 (
@@ -25,7 +25,7 @@ var ProfileTable = `CREATE TABLE IF NOT EXISTS profile
 		photos TEXT
 );`
 
-//---------Photo Table----------------
+//  ---------Photo Table----------------
 
 var PhotoTable = `CREATE TABLE IF NOT EXISTS photo
 (

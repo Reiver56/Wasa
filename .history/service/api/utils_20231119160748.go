@@ -1,6 +1,6 @@
 package api
 
-//fuction that extracts the bearer token from the request header
+//  fuction that extracts the bearer token from the request header
 func extractBearerToken(authorization string) string {
 	return authorization[len("Bearer "):]
 }

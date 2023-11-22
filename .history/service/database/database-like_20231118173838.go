@@ -6,6 +6,6 @@ import (
 	"fmt"
 )
 
-//Database fuction that add a new user in database
+//  Database fuction that add a new user in database
 func (db *appdbimpl) CreateUser(u User) error {
 	

@@ -1,6 +1,6 @@
 package database
 
-//insert ban in the database, with the banner and the banned
+//  insert ban in the database, with the banner and the banned
 func (db *appdbimpl) BanUser(banner User, banned User) error {
 	error := db.c.QueryRow("SELECT COUNT(*) FROM users WHERE id_user = ?",banned.ID)
 	if error != nil {
@@ -13,7 +13,7 @@ func (db *appdbimpl) BanUser(banner User, banned User) error {
 	}
 	return nil
 }
-//delete ban in the database, with the banner and the banned
+//  delete ban in the database, with the banner and the banned
 func (db *appdbimpl) UnbanUser(banner User, banned User) error {
 	_, err := db.c.Exec("DELETE FROM banned WHERE (banner = ? AND banned = ?)", banned.ID, banner.ID)
 	if err != nil {

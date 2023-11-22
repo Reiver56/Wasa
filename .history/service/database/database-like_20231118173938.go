@@ -6,5 +6,5 @@ import (
 	"fmt"
 )
 
-//create a like in database
+//  create a like in database
 

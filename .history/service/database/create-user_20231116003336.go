@@ -1,6 +1,6 @@
 package database
 
-//Database fuction 
+//  Database fuction 
 func (db *appdbimpl) CreateUser(username string, password string) error{
 	_, err := db.c.Exec("INSERT INTO users (username,password) VALUES (?,?), username, password")
 

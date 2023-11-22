@@ -1,6 +1,6 @@
 package api
 
-//in this file, describe singular  object
+//  in this file, describe singular  object
 
 type id_Comment struct {
 	ID_comment int `json:"id"`

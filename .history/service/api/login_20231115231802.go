@@ -19,7 +19,7 @@ func (rt *_router) doLogin(w http.ResponseWriter, r *http.Request, ps httprouter
 	if err != nil {
 		w.WriteHeader(http.StatusBadRequest)
 		return
-	} else if !isValidID(user.ID){ // Validate User ID
+	} else if !isValidID(user.ID){ //   Validate User ID
 		w.WriteHeader(http.StatusForbidden)
 		return
 	}

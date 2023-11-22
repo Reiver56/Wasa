@@ -16,11 +16,11 @@ func (rt *_router) doLogin(w http.ResponseWriter, r *http.Request, ps httprouter
 	var user User
 
 	err := json.New\Decoder(r.Body).Decode(&user)
-	// Check for JSON decoding errors
+	//   Check for JSON decoding errors
 	if err != nil {
 		w.WriteHeader(http.StatusBadRequest)
 		return
-	} else if !isValidID(user.ID){ // Validate User ID
+	} else if !isValidID(user.ID){ //   Validate User ID
 		w.WriteHeader(http.StatusForbidden)
 		return
 	}

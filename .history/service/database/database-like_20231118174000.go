@@ -3,5 +3,5 @@ package database
 import (
 )
 
-//create a like in database
+//  create a like in database
 

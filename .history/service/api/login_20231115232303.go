@@ -13,18 +13,18 @@ import
 func (rt *_router) doLogin(w http.ResponseWriter, r *http.Request, ps httprouter.Params, ctx reqcontext.RequestContext){
 
 	w.Header().Set("Content-type", "application/json")
-	var user User // Create a User object to hold the data from the request
-	// Decode JSON from the request body into the User object
+	var user User //   Create a User object to hold the data from the request
+	//   Decode JSON from the request body into the User object
 	err := json.NewDecoder(r.Body).Decode(&user)
-	// Check for JSON decoding errors
+	//   Check for JSON decoding errors
 	if err != nil {
 		w.WriteHeader(http.StatusBadRequest)
 		return
-	} else if !user.isValidID(){ // Validate User ID
+	} else if !user.isValidID(){ //   Validate User ID
 		w.WriteHeader(http.StatusBadRequest)
 		return
 	}
-	//check if user e
+	//  check if user e
 
 
 	

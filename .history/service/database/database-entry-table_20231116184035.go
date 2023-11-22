@@ -1,1 +1,1 @@
-//crreare delle tabelle per ogni entry
+//  crreare delle tabelle per ogni entry

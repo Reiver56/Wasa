@@ -9,7 +9,7 @@ package database
 
 */ 
 
-//---------User Table----------------
+//  ---------User Table----------------
 
 var UserTable = `CREATE TABLE IF NOT EXISTS users 
 (
@@ -17,7 +17,7 @@ var UserTable = `CREATE TABLE IF NOT EXISTS users
 		nickname TEXT 
 );`
 
-//---------Profile Table--------------
+//  ---------Profile Table--------------
 
 var ProfileTable = `CREATE TABLE IF NOT EXISTS profile
 (
@@ -28,7 +28,7 @@ var ProfileTable = `CREATE TABLE IF NOT EXISTS profile
 		photos TEXT
 );`
 
-//---------Photo Table----------------
+//  ---------Photo Table----------------
 
 var PhotoTable = `CREATE TABLE IF NOT EXISTS photo
 (
@@ -39,7 +39,7 @@ var PhotoTable = `CREATE TABLE IF NOT EXISTS photo
 		date TEXT
 );`
 
-//---------Like Table----------------
+//  ---------Like Table----------------
 
 
 

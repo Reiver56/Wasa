@@ -6,7 +6,7 @@ import (
 
 var query_GETUSER = `SELECT id FROM User WHERE id = ?`
 
-//Database fuction that add a new user in database
+//  Database fuction that add a new user in database
 func (db *appdbimpl) CreateUser(username string) error {
 
 	_, err := db.c.Exec("INSERT INTO Users (id) VALUES (?,?), id")
@@ -17,7 +17,7 @@ func (db *appdbimpl) CreateUser(username string) error {
 	return nil
 }
 
-//Check if user exist in database
+//  Check if user exist in database
 func (db *appdbimpl) ExistUser(username string) (bool, error) {
 	var existUser int
 	err := db.c.QueryRow(`SELECT username FROM users WHERE id = ? `, user).Scan(&existUser)
@@ -32,7 +32,7 @@ func (db *appdbimpl) ExistUser(username string) (bool, error) {
 	return false, nil
 }
 
-//Get user object from database
+//  Get user object from database
 
 func (db *appdbimpl) GetUser(username string) (User, error) {
 	var user User
@@ -40,7 +40,7 @@ func (db *appdbimpl) GetUser(username string) (User, error) {
 	return user, err
 }
 
-//Fuction that modifies a user's username
+//  Fuction that modifies a user's username
 func (db *appdbimpl) SetNewUsername(user User_ID, username string) error {
 
 	_, err := db.c.Exec(`UPDATE User SET ID=?, user.ID`)
