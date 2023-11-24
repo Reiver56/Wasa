@@ -1,4 +1,4 @@
-openapi: 3.0.3
+openapi: '3.0.3'
 info:
   title: WASAphoto's APIs
   description: |-
@@ -11,20 +11,28 @@ info:
 tags:
   - name: "login"
     description: Login to the system
+
   - name: "search"
     description: Search a user
+  
   - name: "user"
     description: Get information about a specific user
+    
   - name: "mystream"
     description: Get all posts of followed users
+
   - name: "photo"
     description: Post photos and get them from other users
+
   - name: "comment"
     description: Comment on posts
+  
   - name: "like"
     description: Like or unlike posts
+
   - name: "ban"
     description: Ban/Unban users
+
   - name: "follow"
     description: Follow/Unfollow users  
 
@@ -57,17 +65,23 @@ paths:
                         pattern: '^.*?$'
                         minLength: 8
                         maxLength: 25
-                      nickname:  
+                      username:  
                         type: string
                         example: paperino05
                         pattern: '^.*?$'
                         minLength: 8
                         maxLength: 25
-                    example:
-                      id: paperino05
-                      nickname: paperino05
+                    
+                      
+              
+                  
+                
+  
         required: true
+
+
       responses:
+        
         '201': 
           description: User log-in action successfull
           content:
@@ -111,8 +125,6 @@ paths:
                     users: 
                       description: it's a list(an array) of users with a partial match with the searched id
                       type: array
-                      minItems: 0
-                      maxItems: 100
                       items:
                         $ref: "#/components/schemas/user_nickname/properties/nickname"
                           
@@ -207,7 +219,16 @@ paths:
 
       responses:
         '200':
-          $ref: "#/components/responses/my_stream"
+            description: get all photos
+            content:
+              application/json:
+                schema:
+                  description: it's an array of post
+                  type: array
+                  items: 
+                    $ref: "#/components/schemas/complete_photo"
+          
+
         '401':
           $ref: "#/components/responses/Unauthorized"
         '404':
@@ -411,7 +432,7 @@ paths:
       security:
         - bearerAuth: []
 
-#-------------------------------------------------------------------------------------------    
+#    
   
   /user/{id}/banned_users/{user_banned_id}:
     parameters:
@@ -419,28 +440,6 @@ paths:
      - $ref: "#/components/parameters/id"
      - $ref: "#/components/parameters/user_banned_id"
     
-    put:
-      tags: ["ban"]
-      summary: a user can ban another user's account
-      description: ban another user
-      operationId: banUser
-
-      responses:
-        '204':
-          $ref: "#/components/responses/NoContent"
-        
-        '403': 
-          $ref: "#/components/responses/Forbiden"
-
-        '401':
-          $ref: "#/components/responses/Unauthorized"
-
-        '500':
-          $ref: "#/components/responses/InternalServerError"
-
-      security:
-        - bearerAuth: []
-
     delete:
 
       tags: ["ban"]
@@ -464,8 +463,6 @@ paths:
       security:
         - bearerAuth: []
   
-#-------------------------------------------------------------------------------------------
-
   /user/{id}/followed:
 
     parameters:
@@ -597,14 +594,6 @@ components:
 
   #-------------------------------------------------------------------------------------
   responses:
-
-    my_stream:
-      description: Response linked to 200 http status (OK), and return all posts of followed users
-      content:
-        application/json:
-          schema:
-            $ref: "#/components/schemas/complete_photo"
-
     #204
     NoContent:
       description: Response linked to 204 http status (no content)
@@ -676,18 +665,11 @@ components:
     
     username: 
       description: Username
-      type: object
-      properties:
-        user_id:
-          description: It's a unique id for user
-          type: string
-          minLength: 3
-          maxLength: 13
-          pattern: "^[a-z0-9]{3,13}$"
-          example: "Marietto88"
-      example:
-        user_id: "Marietto88"
-      
+      type: string
+      pattern: "^[a-z0-9]{3,13}$"
+      example: "Marietto88"
+      minLength: 3
+      maxLength: 13
       
     user_nickname:
       description: it's a user's nickname 
@@ -722,7 +704,7 @@ components:
           
           nickname: {$ref: "#/components/schemas/user_nickname/properties/nickname"}
           
-          user_id: {$ref: "#/components/schemas/user_nickname/properties/nickname"}
+          User_id: {$ref: "#/components/schemas/user_nickname/properties/nickname"}
           
           followers:
             description: Array of followers
@@ -747,7 +729,7 @@ components:
             type: array
             items:
               $ref: "#/components/schemas/complete_photo"
-
+            #da scrivere degli esempi
 
               
 
@@ -913,6 +895,25 @@ components:
           type: string
           format: date
           example: "2023-04-05"
+
+
+
+
+   
+      
+      
+
+    
+    Error:
+      type: object
+      properties:
+        code:
+          type: string
+        message:
+          type: string
+      required:
+        - code 
+        - message
         
 #---------------------------------------------------------------------------------------
   securitySchemes:

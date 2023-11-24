@@ -57,7 +57,7 @@ paths:
                         pattern: '^.*?$'
                         minLength: 8
                         maxLength: 25
-                      nickname:  
+                      username:  
                         type: string
                         example: paperino05
                         pattern: '^.*?$'
@@ -65,7 +65,7 @@ paths:
                         maxLength: 25
                     example:
                       id: paperino05
-                      nickname: paperino05
+                      username: paperino05
         required: true
       responses:
         '201': 
@@ -111,8 +111,6 @@ paths:
                     users: 
                       description: it's a list(an array) of users with a partial match with the searched id
                       type: array
-                      minItems: 0
-                      maxItems: 100
                       items:
                         $ref: "#/components/schemas/user_nickname/properties/nickname"
                           

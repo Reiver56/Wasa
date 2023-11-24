@@ -111,8 +111,7 @@ paths:
                     users: 
                       description: it's a list(an array) of users with a partial match with the searched id
                       type: array
-                      minItems: 0
-                      maxItems: 100
+                      
                       items:
                         $ref: "#/components/schemas/user_nickname/properties/nickname"
                           
