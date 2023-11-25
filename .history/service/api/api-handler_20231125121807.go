@@ -30,28 +30,28 @@ func (rt *_router) Handler() http.Handler {
 	rt.router.DELETE("/users/:id/photo/:photo_id",rt.wrap(rt.deletePhoto))
 
 
-	//  -----commentPhoto--------------------------
-	rt.router.POST("/users/:id/comment",rt.wrap(rt.commentPhoto))
-	//  -----deleteComment--------------------------
-	rt.router.DELETE("/users/:id/comment/:comment_id",rt.wrap(rt.unCommentPhoto))
-	
-	
 	//  -----likePhoto--------------------------
 	rt.router.PUT("/users/:id/like",rt.wrap(rt.likePhoto))
+	
 	//  -----unlikePhoto--------------------------
 	rt.router.DELETE("/users/:id/like/:photo_id",rt.wrap(rt.unlikePhoto))
 
+	
+	
+	
+	
+	//  -----followUser--------------------------
+	rt.router.PUT("/users/:id/follow",rt.wrap(rt.followUser)) 
+
+	//  -----unfollowUser--------------------------
+	rt.router.DELETE("/users/:id/follow/:followed_id",rt.wrap(rt.unfollowUser))
+	
 
 	//  -----banUser--------------------------
 	rt.router.PUT("/users/:id/ban",rt.wrap(rt.banUser))
+
 	//  -----unbanUser--------------------------
 	rt.router.DELETE("/users/:id/ban/:banned_id",rt.wrap(rt.unbanUser))
-	
-
-	//  -----followUser--------------------------
-	rt.router.PUT("/users/:id/follow",rt.wrap(rt.followUser)) 
-	//  -----unfollowUser--------------------------
-	rt.router.DELETE("/users/:id/follow/:followed_id",rt.wrap(rt.unfollowUser))
 	
 	return rt.router 
 }
