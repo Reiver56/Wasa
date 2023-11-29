@@ -417,7 +417,7 @@ paths:
     parameters:
 
      - $ref: "#/components/parameters/id"
-     - $ref: "#/components/parameters/banned_id"
+     - $ref: "#/components/parameters/user_banned_id"
 
     put:
       tags: ["ban"]
