@@ -48,7 +48,7 @@ func (rt *_router) Handler() http.Handler {
 	//  -----unfollowUser--------------------------
 	rt.router.DELETE("/users/:id/follow/:followed_id", rt.wrap(rt.unfollowUser))
 
-	rt.router.GET("/liveness", rt.liveness)
+	rt.router.GET("/liveness", rt.wrap(rt.liveness))
 
 	return rt.router
 }
