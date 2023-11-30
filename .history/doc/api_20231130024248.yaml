@@ -27,7 +27,8 @@ tags:
     description: Follow/Unfollow users
 
 
-#...........................................................................................
+#----------------------------------------------------------------------------------------------------
+
 
 paths:
   /login:
@@ -86,8 +87,6 @@ paths:
       security:
         - bearerAuth: []
 
-#-------------------------------------------------------------------------------------------
-
   /users:
     get:
       tags: ["search"]
@@ -134,7 +133,8 @@ paths:
       security:
         - bearerAuth: []
 
-#-------------------------------------------------------------------------------------------
+
+
 
   /users/{id}:
 
@@ -195,7 +195,7 @@ paths:
       security:
         - bearerAuth: []
 
-#-------------------------------------------------------------------------------------------
+
 
   /user/{id}/mystream:
 
@@ -220,8 +220,6 @@ paths:
 
       security:
         - bearerAuth: []
-
-#-------------------------------------------------------------------------------------------
 
   /user/{id}/photos:
 
@@ -263,8 +261,6 @@ paths:
       security:
         - bearerAuth: []
 
-#-------------------------------------------------------------------------------------------
-
   /user/{id}/photos/{photo_id}:
     parameters:
      - $ref: "#/components/parameters/id"
@@ -291,8 +287,6 @@ paths:
 
       security:
         - bearerAuth: []
-
-#-------------------------------------------------------------------------------------------
 
   /user/{id}/photos/{photo_id}/comments:
 
@@ -335,7 +329,7 @@ paths:
       security:
         - bearerAuth: []
 
-#-------------------------------------------------------------------------------------------
+
   /user/{id}/photos/{photo_id}/comments/{comment_id}:
 
     parameters:
@@ -474,7 +468,6 @@ paths:
         - bearerAuth: []
 
 #-------------------------------------------------------------------------------------------
-
   /user/{id}/followers/{follow_id}:
     parameters:
      - $ref: "#/components/parameters/id"
@@ -606,12 +599,11 @@ components:
         application/json:
           schema:
             $ref: "#/components/schemas/complete_photo"
-#-------------------------------------------------------------------------------------------
+
     #204
     NoContent:
       description: Response linked to 204 http status (no content)
 
-#-------------------------------------------------------------------------------------------
     #400
     BadRequest:
       description: Response linked to 400 http status (bad request)
@@ -624,7 +616,6 @@ components:
             minLength: 11
             maxLength: 30
 
-#-------------------------------------------------------------------------------------------
 
      #401
     Unauthorized:
@@ -637,8 +628,6 @@ components:
             example: "Unauthorized"
             minLength: 12
             maxLength: 30
-#-------------------------------------------------------------------------------------------
-
     #403
     Forbiden:
       description: Response linked to 403 http status(403)
@@ -650,9 +639,6 @@ components:
             example: "Forbiden"
             minLength: 7
             maxLength: 30
-
-#-------------------------------------------------------------------------------------------
-
     #404
     NotFound:
       description: Response linked to 404 http status(the resource is not found)
@@ -664,9 +650,6 @@ components:
             example: "Not Found"
             minLength: 9
             maxLength: 30
-
-#-------------------------------------------------------------------------------------------
-
     #500
     InternalServerError:
       description: Response linked to 500 http status (the server encountered an unexpected condition)
@@ -679,9 +662,13 @@ components:
             minLength: 21
             maxLength: 30
 
-#...........................................................................................
 
+
+
+
+  #-------------------------------------------------------------------------------------
   schemas:
+
     username:
       description: object that contains the user's id
       type: object
@@ -696,7 +683,6 @@ components:
       example:
         user_id: "Marietto88"
 
-#-------------------------------------------------------------------------------------------
 
     user_nickname:
       description: it's a user's nickname
@@ -711,8 +697,6 @@ components:
           example: "Mariotto11"
       example:
         nickname: "Mariotto11"
-
-#-------------------------------------------------------------------------------------------
 
     complete_profile:
       description: define all information of user profile
@@ -753,7 +737,6 @@ components:
             items:
               $ref: "#/components/schemas/complete_photo"
 
-#-------------------------------------------------------------------------------------------
 
     complete_like:
       description: define all information of like
@@ -767,54 +750,45 @@ components:
           minimum: 0
           maximum: 99999
           readOnly: true
-        user_id:
+
+        id:
           $ref: "#/components/schemas/username/properties/user_id"
-
       example:
-          like_id: 33
-          user_id: Marietto119
+        - like_id: 33
+        - id: Marietto119
 
-#-------------------------------------------------------------------------------------------
 
     comment_id:
       description: define a identifier of comment
-      type: object
-      properties:
-        id:
-          description: It's a unique id for comment
-          type: integer
-          format: int64
-          example: 578
-          minimum: 0
-          maximum: 99999
-          readOnly: true
+      type: integer
+      format: int64
+      minimum: 1
+      maximum: 999
+      example: 121
 
-#-------------------------------------------------------------------------------------------
 
     complete_comment:
       description: complete comment that includes the structure of the comment and its identifier
       type: object
       properties:
         comment_id:
-          $ref: "#/components/schemas/comment_id/properties/id"
+          $ref: "#/components/schemas/comment_id"
         username:
-          $ref: "#/components/schemas/username/properties/user_id"
+          $ref: "#/components/schemas/username"
         comment:
           $ref: "#/components/schemas/comment/properties/comment"
-
       example:
-          comment_id: 112
-          username: Luffy11
-          comment: "wow, dove sei??"
+        - comment_id: 112
+        - username: Monkey.D.Luffy11
+        - comment: "wow, dove sei??"
 
-#-------------------------------------------------------------------------------------------
 
     comment:
       description: define a comment
       type: object
       properties:
-        user_id:
-          $ref: "#/components/schemas/username/properties/user_id"
+        username:
+          $ref: "#/components/schemas/username"
 
         comment:
           type: string
@@ -822,12 +796,10 @@ components:
           minLength: 3
           maxLength: 100
           example: bella foto, come stai?
+      example: bella foto, dove sei?
 
-      example:
-        user_id: marcolino11
-        comment: bella foto, dove sei?
 
-#-------------------------------------------------------------------------------------------
+
 
     photo:
       description: define a photo
@@ -855,7 +827,6 @@ components:
         photo_id: 578
         file: "1010101010"
 
-#-------------------------------------------------------------------------------------------
 
     complete_photo:
       description: define all information of photo(as a post)

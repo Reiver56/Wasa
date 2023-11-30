@@ -610,7 +610,6 @@ components:
     #204
     NoContent:
       description: Response linked to 204 http status (no content)
-
 #-------------------------------------------------------------------------------------------
     #400
     BadRequest:
@@ -623,7 +622,7 @@ components:
             example: "Bad Request"
             minLength: 11
             maxLength: 30
-
+            
 #-------------------------------------------------------------------------------------------
 
      #401
@@ -650,9 +649,6 @@ components:
             example: "Forbiden"
             minLength: 7
             maxLength: 30
-
-#-------------------------------------------------------------------------------------------
-
     #404
     NotFound:
       description: Response linked to 404 http status(the resource is not found)
@@ -664,9 +660,6 @@ components:
             example: "Not Found"
             minLength: 9
             maxLength: 30
-
-#-------------------------------------------------------------------------------------------
-
     #500
     InternalServerError:
       description: Response linked to 500 http status (the server encountered an unexpected condition)
@@ -679,9 +672,13 @@ components:
             minLength: 21
             maxLength: 30
 
-#...........................................................................................
 
+
+
+
+  #-------------------------------------------------------------------------------------
   schemas:
+
     username:
       description: object that contains the user's id
       type: object
@@ -696,7 +693,6 @@ components:
       example:
         user_id: "Marietto88"
 
-#-------------------------------------------------------------------------------------------
 
     user_nickname:
       description: it's a user's nickname
@@ -711,8 +707,6 @@ components:
           example: "Mariotto11"
       example:
         nickname: "Mariotto11"
-
-#-------------------------------------------------------------------------------------------
 
     complete_profile:
       description: define all information of user profile
@@ -753,7 +747,6 @@ components:
             items:
               $ref: "#/components/schemas/complete_photo"
 
-#-------------------------------------------------------------------------------------------
 
     complete_like:
       description: define all information of like
@@ -774,7 +767,6 @@ components:
           like_id: 33
           user_id: Marietto119
 
-#-------------------------------------------------------------------------------------------
 
     comment_id:
       description: define a identifier of comment
@@ -789,7 +781,6 @@ components:
           maximum: 99999
           readOnly: true
 
-#-------------------------------------------------------------------------------------------
 
     complete_comment:
       description: complete comment that includes the structure of the comment and its identifier
@@ -807,7 +798,6 @@ components:
           username: Luffy11
           comment: "wow, dove sei??"
 
-#-------------------------------------------------------------------------------------------
 
     comment:
       description: define a comment
@@ -827,7 +817,8 @@ components:
         user_id: marcolino11
         comment: bella foto, dove sei?
 
-#-------------------------------------------------------------------------------------------
+
+
 
     photo:
       description: define a photo
@@ -855,7 +846,6 @@ components:
         photo_id: 578
         file: "1010101010"
 
-#-------------------------------------------------------------------------------------------
 
     complete_photo:
       description: define all information of photo(as a post)

@@ -855,7 +855,6 @@ components:
         photo_id: 578
         file: "1010101010"
 
-#-------------------------------------------------------------------------------------------
 
     complete_photo:
       description: define all information of photo(as a post)
