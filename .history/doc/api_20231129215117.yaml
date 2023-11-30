@@ -67,7 +67,6 @@ paths:
         required: true
 
       responses:
-      
         '200':
           description: User log-in action successfull
           content:
@@ -691,7 +690,7 @@ components:
           type: string
           minLength: 3
           maxLength: 13
-          pattern: "^.*?$"
+          pattern: "^."
           example: "Marietto88"
       example:
         user_id: "Marietto88"
