@@ -9,18 +9,11 @@ func (rt *_router) followUser(w http.ResponseWriter, r *http.Request, ps httprou
 	w.Header().Set("Content-Type", "application/json")
 
 	auth := r.Header.Get("Authorization")
-	// verify if user is logged in
-	if auth != ps.ByName("id") {
-		w.WriteHeader(http.StatusBadRequest)
-		ctx.Logger.Errorf("error: user is not logged in")
-		return
-	}
-
-	// define two users: user_req is the user that is logged in and user is the user that is going to be followed
+	user.ID = ps.ByName("id")
 	var user_req User
-	user_req.ID = ps.ByName("id")
+	user_req.ID = auth
 	var user User
-	user.ID = ps.ByName("follow_id")
+
 
 	if user.ID == "" {
 		w.WriteHeader(http.StatusBadRequest)

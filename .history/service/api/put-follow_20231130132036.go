@@ -20,7 +20,7 @@ func (rt *_router) followUser(w http.ResponseWriter, r *http.Request, ps httprou
 	var user_req User
 	user_req.ID = ps.ByName("id")
 	var user User
-	user.ID = ps.ByName("follow_id")
+	user.ID = ps.ByName("follower_id")
 
 	if user.ID == "" {
 		w.WriteHeader(http.StatusBadRequest)

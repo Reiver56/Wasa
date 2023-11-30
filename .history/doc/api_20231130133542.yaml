@@ -12,19 +12,19 @@ tags:
   - name: "search"
     description: Endpoint for search users
   - name: "user"
-    description: Endpoint for user's profile
+    description: Get information about a specific user
   - name: "mystream"
-    description: Endpoint for user's stream
+    description: Get all posts of followed users
   - name: "photo"
-    description: Endpoint for photo
+    description: Post photos and get them from other users
   - name: "comment"
-    description: Endpoint for comment
+    description: Comment on posts
   - name: "like"
-    description: Endpoint for like
+    description: Like or unlike posts
   - name: "ban"
-    description: Endpoint for ban
+    description: Ban/Unban users
   - name: "followers"
-    description: Endpoint for followers
+    description: Follow/Unfollow users
 
 
 #...........................................................................................

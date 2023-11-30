@@ -10,18 +10,17 @@ import (
 func (rt *_router) banUser(w http.ResponseWriter, r *http.Request, ps httprouter.Params, ctx reqcontext.RequestContext) {
 
 	banner := ps.ByName("id")
-	control := r.Header.Get("Authorization")
-	banned := ps.ByName("banned_id")
-	
+	controlbanned := r.Header.Get("Authorization")
+
 	if banner == "" {
 		w.WriteHeader(http.StatusBadRequest)
 		ctx.Logger.Errorf("user not logged in")
 		return
 	}
 
-	if banner != control {
+	if banner == banned {
 		w.WriteHeader(http.StatusBadRequest)
-		ctx.Logger.Errorf("user not logged in")
+		ctx.Logger.Errorf("user cannot ban himself")
 		return
 	}
 	// define banner (with b1) and banned (with b2)

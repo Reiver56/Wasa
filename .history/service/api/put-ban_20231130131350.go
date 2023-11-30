@@ -11,8 +11,7 @@ func (rt *_router) banUser(w http.ResponseWriter, r *http.Request, ps httprouter
 
 	banner := ps.ByName("id")
 	control := r.Header.Get("Authorization")
-	banned := ps.ByName("banned_id")
-	
+
 	if banner == "" {
 		w.WriteHeader(http.StatusBadRequest)
 		ctx.Logger.Errorf("user not logged in")

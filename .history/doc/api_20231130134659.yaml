@@ -301,7 +301,7 @@ paths:
      - $ref: "#/components/parameters/photo_id"
 
     post:
-      tags: ["comment"]
+      tags: ["comments"]
       description: comment a photo
       operationId: commentPhoto
       summary: user can comment a photo

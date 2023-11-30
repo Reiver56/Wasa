@@ -301,7 +301,7 @@ paths:
      - $ref: "#/components/parameters/photo_id"
 
     post:
-      tags: ["comment"]
+      tags: ["comments"]
       description: comment a photo
       operationId: commentPhoto
       summary: user can comment a photo
@@ -345,7 +345,7 @@ paths:
      - $ref: "#/components/parameters/comment_id"
 
     delete:
-      tags: ["comment"]
+      tags: ["comments"]
       description: delete a comment
       summary: user can delete a comment that he has written on a photo
       operationId: uncommentPhoto

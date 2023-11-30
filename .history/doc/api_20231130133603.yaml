@@ -18,13 +18,13 @@ tags:
   - name: "photo"
     description: Endpoint for photo
   - name: "comment"
-    description: Endpoint for comment
+    description: Comment on posts
   - name: "like"
-    description: Endpoint for like
+    description: Like or unlike posts
   - name: "ban"
-    description: Endpoint for ban
+    description: Ban/Unban users
   - name: "followers"
-    description: Endpoint for followers
+    description: Follow/Unfollow users
 
 
 #...........................................................................................

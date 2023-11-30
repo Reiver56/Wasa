@@ -38,11 +38,11 @@ func (rt *_router) Handler() http.Handler {
 
 	//  -----banUser--------------------------
 	rt.router.PUT("/users/:id/ban_users/:banned_id", rt.wrap(rt.banUser))
-	rt.router.DELETE("/users/:id/ban_users/:banned_id", rt.wrap(rt.unbanUser))
+	rt.router.DELETE("/users/:id/ban_/:banned_id", rt.wrap(rt.unbanUser))
 
 	//  -----followUser--------------------------
-	rt.router.PUT("/users/:id/followers/:follow_id", rt.wrap(rt.followUser))
-	rt.router.DELETE("/users/:id/followers/:follow_id", rt.wrap(rt.unfollowUser))
+	rt.router.PUT("/users/:id/followers/:follower_id", rt.wrap(rt.followUser))
+	rt.router.DELETE("/users/:id/followers/:follower_id", rt.wrap(rt.unfollowUser))
 
 	rt.router.GET("/liveness", rt.liveness)
 

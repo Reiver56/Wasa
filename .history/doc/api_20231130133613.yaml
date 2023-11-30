@@ -22,9 +22,9 @@ tags:
   - name: "like"
     description: Endpoint for like
   - name: "ban"
-    description: Endpoint for ban
+    description: Ban/Unban users
   - name: "followers"
-    description: Endpoint for followers
+    description: Follow/Unfollow users
 
 
 #...........................................................................................

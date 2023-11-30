@@ -42,7 +42,7 @@ func (rt *_router) Handler() http.Handler {
 
 	//  -----followUser--------------------------
 	rt.router.PUT("/users/:id/followers/:follow_id", rt.wrap(rt.followUser))
-	rt.router.DELETE("/users/:id/followers/:follow_id", rt.wrap(rt.unfollowUser))
+	rt.router.DELETE("/users/:id/followers/:follower_id", rt.wrap(rt.unfollowUser))
 
 	rt.router.GET("/liveness", rt.liveness)
 
