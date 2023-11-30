@@ -10,8 +10,7 @@ func (rt *_router) unfollowUser(w http.ResponseWriter, r *http.Request, ps httpr
 	w.Header().Set("Content-Type", "application/json")
 	identifier := ps.ByName("id")
 	auth := r.Header.Get("Authorization")
-
-	if identifier != auth {
+	if identifier != "" {
 		w.WriteHeader(http.StatusBadRequest)
 		ctx.Logger.Errorf("user not logged in")
 		return
@@ -39,7 +38,7 @@ func (rt *_router) unfollowUser(w http.ResponseWriter, r *http.Request, ps httpr
 		return
 	}
 
-	if rt.db.IsBanned(user_req.ID, user.ID) {
+	if rt.db.IsBanned(user_req.ID, user.ID){
 		w.WriteHeader(http.StatusForbidden)
 		ctx.Logger.Errorf("user is banned")
 		return
