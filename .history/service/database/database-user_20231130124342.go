@@ -58,7 +58,6 @@ func (db *appdbimpl) CheckUser(user User) (bool) {
 		return false
 	}
 	return true
-}
 
 func (db *appdbimpl) GetMyStream(user User) ([]Photo, error) {
 	rows, err := db.c.Query("SELECT * FROM photo WHERE user_id IN (SELECT followed FROM follow WHERE follower = ?) ORDER BY date DESC", user.ID)

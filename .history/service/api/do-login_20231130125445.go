@@ -21,7 +21,7 @@ func (rt *_router) doLogin(w http.ResponseWriter, r *http.Request, ps httprouter
 	// Decode JSON from the request body into the User object
 	err := json.NewDecoder(r.Body).Decode(&user)
 
-	// Check for JSON decoding errors
+	//   Check for JSON decoding errors
 	if err != nil {
 
 		w.WriteHeader(http.StatusBadRequest)
@@ -31,7 +31,7 @@ func (rt *_router) doLogin(w http.ResponseWriter, r *http.Request, ps httprouter
 		return
 	}
 
-	// Check if user exist and return them, if not exist create a new user
+	//  Check if user exist and return them, if not exist create a new user
 
 	exist, err := rt.db.ExistUser(user.Nickname)
 	if err != nil {

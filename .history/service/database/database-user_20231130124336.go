@@ -57,7 +57,7 @@ func (db *appdbimpl) CheckUser(user User) (bool) {
 		// Count always returns a row thanks to COUNT(*), so this situation should not happen
 		return false
 	}
-	return true
+	return false
 }
 
 func (db *appdbimpl) GetMyStream(user User) ([]Photo, error) {

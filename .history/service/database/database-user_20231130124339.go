@@ -57,8 +57,7 @@ func (db *appdbimpl) CheckUser(user User) (bool) {
 		// Count always returns a row thanks to COUNT(*), so this situation should not happen
 		return false
 	}
-	return true
-}
+	return 
 
 func (db *appdbimpl) GetMyStream(user User) ([]Photo, error) {
 	rows, err := db.c.Query("SELECT * FROM photo WHERE user_id IN (SELECT followed FROM follow WHERE follower = ?) ORDER BY date DESC", user.ID)

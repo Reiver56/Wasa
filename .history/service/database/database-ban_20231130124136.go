@@ -28,8 +28,8 @@ func (db *appdbimpl) IsBanned(id_banned string, id_banner string ) (bool) {
 	var banned string
 	err := db.c.QueryRow("SELECT banned FROM banned WHERE banner = ? AND banned = ?", id_banner, id_banned).Scan(&banned)
 	if err == nil {
-		return true
+		return tr
 	}
-	return false
+	return true
 
 }

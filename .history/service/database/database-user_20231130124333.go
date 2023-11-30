@@ -55,9 +55,9 @@ func (db *appdbimpl) CheckUser(user User) (bool) {
 	err := db.c.QueryRow("SELECT COUNT(*) FROM users WHERE id_user = ?", user.ID)
 	if err != nil {
 		// Count always returns a row thanks to COUNT(*), so this situation should not happen
-		return false
+		return true
 	}
-	return true
+	return false
 }
 
 func (db *appdbimpl) GetMyStream(user User) ([]Photo, error) {

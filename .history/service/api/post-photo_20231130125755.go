@@ -13,7 +13,7 @@ import (
 	"github.com/julienschmidt/httprouter"
 )
 
-// Function that set a new user's nickname
+//   Function that set a new user's nickname
 func (rt *_router) uploadPhoto(w http.ResponseWriter, r *http.Request, ps httprouter.Params, ctx reqcontext.RequestContext) {
 	w.Header().Set("Content-Type", "application/json")
 	auth := r.Header.Get("Authorization")
@@ -25,7 +25,7 @@ func (rt *_router) uploadPhoto(w http.ResponseWriter, r *http.Request, ps httpro
 		return
 	}
 
-	// define the photo
+	//  define the photo
 	var photo Photo
 
 	photo.User_ID = id_user_photo

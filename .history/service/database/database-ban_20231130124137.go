@@ -30,6 +30,6 @@ func (db *appdbimpl) IsBanned(id_banned string, id_banner string ) (bool) {
 	if err == nil {
 		return true
 	}
-	return false
+	return true
 
 }

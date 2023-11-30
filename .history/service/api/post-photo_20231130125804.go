@@ -25,7 +25,7 @@ func (rt *_router) uploadPhoto(w http.ResponseWriter, r *http.Request, ps httpro
 		return
 	}
 
-	// define the photo
+	//  define the photo
 	var photo Photo
 
 	photo.User_ID = id_user_photo
