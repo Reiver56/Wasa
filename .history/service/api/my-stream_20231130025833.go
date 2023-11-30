@@ -20,6 +20,7 @@ func (rt *_router) myStream(w http.ResponseWriter, r *http.Request, ps httproute
 	}
 	followers, err := rt.db.GetFollow(id)
 	if err != nil {
+		
 		w.WriteHeader(http.StatusInternalServerError)
 		ctx.Logger.Errorf("error getting followers: %v", err)
 		return

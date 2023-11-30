@@ -39,7 +39,8 @@ func (rt *_router) unlikePhoto(w http.ResponseWriter, r *http.Request, ps httpro
 		ctx.Logger.Errorf("photo_id must be an integer")
 		return
 	}
-	
+
+	fmt.Println(id_like_user + " " + id_user_photo)
 
 	var like Like
 	like.User = id_like_user

@@ -3,7 +3,7 @@ package database
 import (
 	"database/sql"
 	"errors"
-
+	
 )
 
 // Database fuction that add a new user in database
@@ -12,6 +12,7 @@ func (db *appdbimpl) CreateUser(u User) error {
 	// -------INSERT USER IN DATABASE-------
 	_, err := db.c.Exec(`INSERT INTO users (id, nickname) VALUES(?, ?)`, u.ID, u.Nickname)
 	if err != nil {
+		fmt.Println("Error inserting user in database")
 		return err
 	}
 	return nil
@@ -47,6 +48,7 @@ func (db *appdbimpl) GetNickname(id string) (string, error) {
 func (db *appdbimpl) SetNewUsername(userID string, username string) error {
 
 	_, err := db.c.Exec(`UPDATE users SET nickname = ? WHERE id = ?`, username, userID)
+	fmt.Println(err)
 	return err
 
 }

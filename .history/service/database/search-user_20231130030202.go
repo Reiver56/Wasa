@@ -9,6 +9,7 @@ func (db *appdbimpl) GetUserProfile(u1 User, u2 User) ([]Profile, error) {
 		return nil, err
 	}
 	defer rows.Close()
+	fmt.Println(rows)
 	var profiles []Profile
 	for rows.Next() {
 		var profile Profile
@@ -17,8 +18,8 @@ func (db *appdbimpl) GetUserProfile(u1 User, u2 User) ([]Profile, error) {
 			return nil, err
 		}
 		profiles = append(profiles, profile)
+		fmt.Println(profiles)
 	}
-	
 	if rows.Err() != nil {
 		return nil, err
 	}

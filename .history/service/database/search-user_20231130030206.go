@@ -17,8 +17,8 @@ func (db *appdbimpl) GetUserProfile(u1 User, u2 User) ([]Profile, error) {
 			return nil, err
 		}
 		profiles = append(profiles, profile)
+		fmt.Println(profiles)
 	}
-	
 	if rows.Err() != nil {
 		return nil, err
 	}

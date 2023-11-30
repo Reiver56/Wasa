@@ -6,7 +6,7 @@ import (
 	"encoding/json"
 	"net/http"
 	"github.com/julienschmidt/httprouter"
-
+	
 )
 const PHOTO_IN_HOME = 3
 func (rt *_router) myStream(w http.ResponseWriter, r *http.Request, ps httprouter.Params, ctx reqcontext.RequestContext){
@@ -20,6 +20,7 @@ func (rt *_router) myStream(w http.ResponseWriter, r *http.Request, ps httproute
 	}
 	followers, err := rt.db.GetFollow(id)
 	if err != nil {
+		fmt.Println("errore qui 1")
 		w.WriteHeader(http.StatusInternalServerError)
 		ctx.Logger.Errorf("error getting followers: %v", err)
 		return

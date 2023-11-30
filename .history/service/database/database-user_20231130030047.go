@@ -47,6 +47,7 @@ func (db *appdbimpl) GetNickname(id string) (string, error) {
 func (db *appdbimpl) SetNewUsername(userID string, username string) error {
 
 	_, err := db.c.Exec(`UPDATE users SET nickname = ? WHERE id = ?`, username, userID)
+	fmt.Println(err)
 	return err
 
 }

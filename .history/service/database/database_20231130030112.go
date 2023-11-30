@@ -33,7 +33,7 @@ package database
 import (
 	"database/sql"
 	"errors"
-	"fmt"
+	
 )
 
 // AppDatabase is the high level interface for the DB

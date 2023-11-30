@@ -1,7 +1,6 @@
 package database
 import(
-	"errors"
-)
+	"errors")
 // insert ban in the database, with the banner and the banned
 func (db *appdbimpl) BanUser(banner User, banned User) error {
 	if (db.CheckUser(banner)) {
