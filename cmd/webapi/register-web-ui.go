@@ -4,10 +4,10 @@ package main
 
 import (
 	"fmt"
+	"git.sapienzaapps.it/fantasticcoffee/fantastic-coffee-decaffeinated/webui"
 	"io/fs"
 	"net/http"
 	"strings"
-	"Wasa-photo-1905917/webui"
 )
 
 func registerWebUI(hdl http.Handler) (http.Handler, error) {

@@ -8,11 +8,6 @@ import LoadingSpinner from './components/LoadingSpinner.vue'
 import './assets/dashboard.css'
 import './assets/main.css'
 
-app.config.globalProperties.$axios = axios.create({
-	baseURL: 'http://localhost:3000',
-	timeout: 1000 *5
-});
-
 const app = createApp(App)
 app.config.globalProperties.$axios = axios;
 app.component("ErrorMsg", ErrorMsg);
