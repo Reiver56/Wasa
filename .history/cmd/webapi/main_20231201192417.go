@@ -30,7 +30,7 @@ import (
 	"fmt"
 	"Wasa-photo-1905917/service/api"
 	"Wasa-photo-1905917/service/database"
-	"Wasa-photo-1905917/service/globaltime"
+	"git.sapienzaapps.it/fantasticcoffee/fantastic-coffee-decaffeinated/service/globaltime"
 	"github.com/ardanlabs/conf"
 	_ "github.com/mattn/go-sqlite3"
 	"github.com/sirupsen/logrus"

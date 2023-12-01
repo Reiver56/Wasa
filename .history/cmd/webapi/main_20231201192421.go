@@ -30,7 +30,7 @@ import (
 	"fmt"
 	"Wasa-photo-1905917/service/api"
 	"Wasa-photo-1905917/service/database"
-	"Wasa-photo-1905917/service/globaltime"
+	"Wasa-photo-1905917d/service/globaltime"
 	"github.com/ardanlabs/conf"
 	_ "github.com/mattn/go-sqlite3"
 	"github.com/sirupsen/logrus"

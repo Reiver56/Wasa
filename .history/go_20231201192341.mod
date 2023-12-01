@@ -1,4 +1,4 @@
-module Wasa-photo-1905917
+module 
 
 go 1.17
 
