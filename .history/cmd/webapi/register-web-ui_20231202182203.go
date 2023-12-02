@@ -3,8 +3,8 @@
 package main
 
 import (
-	"Wasa-photo-1905917/webui"
 	"fmt"
+	"git.sapienzaapps.it/fantasticcoffee/fantastic-coffee-decaffeinated/webui"
 	"io/fs"
 	"net/http"
 	"strings"

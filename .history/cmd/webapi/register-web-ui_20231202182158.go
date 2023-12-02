@@ -3,8 +3,8 @@
 package main
 
 import (
-	"Wasa-photo-1905917/webui"
 	"fmt"
+	""
 	"io/fs"
 	"net/http"
 	"strings"
