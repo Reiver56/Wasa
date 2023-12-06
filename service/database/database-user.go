@@ -3,7 +3,6 @@ package database
 import (
 	"database/sql"
 	"errors"
-
 )
 
 // Database fuction that add a new user in database
@@ -51,7 +50,7 @@ func (db *appdbimpl) SetNewUsername(userID string, username string) error {
 
 }
 
-func (db *appdbimpl) CheckUser(user User) (bool) {
+func (db *appdbimpl) CheckUser(user User) bool {
 	err := db.c.QueryRow("SELECT COUNT(*) FROM users WHERE id_user = ?", user.ID)
 	if err != nil {
 		// Count always returns a row thanks to COUNT(*), so this situation should not happen
@@ -71,7 +70,7 @@ func (db *appdbimpl) GetMyStream(user User) ([]Photo, error) {
 	var photos []Photo
 	for rows.Next() {
 		var photo Photo
-		err = rows.Scan(&photo.Id_photo, &photo.User_ID, &photo.Likes, &photo.Comments ,&photo.Date)
+		err = rows.Scan(&photo.Id_photo, &photo.User_ID, &photo.Likes, &photo.Comments, &photo.Date)
 		if err != nil {
 			return nil, err
 		}

@@ -2,8 +2,8 @@ package api
 
 import (
 	"Wasa-photo-1905917/service/api/reqcontext"
-	"net/http"
 	"github.com/julienschmidt/httprouter"
+	"net/http"
 )
 
 // Function that set a new user's nickname

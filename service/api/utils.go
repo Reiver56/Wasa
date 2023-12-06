@@ -5,6 +5,7 @@ import (
 	"os"
 	"path/filepath"
 )
+
 func createFolder(id_user string, ctx reqcontext.RequestContext) error {
 	path := filepath.Join("photos", id_user)
 
@@ -15,6 +16,6 @@ func createFolder(id_user string, ctx reqcontext.RequestContext) error {
 	}
 	return nil
 }
-func getUserFolder(id_user string ) (string, error){
-	return filepath.Join(photoFolder,id_user,"photos"), nil
+func getUserFolder(id_user string) (string, error) {
+	return filepath.Join(photoFolder, id_user, "photos"), nil
 }

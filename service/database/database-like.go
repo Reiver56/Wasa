@@ -20,9 +20,10 @@ func (db *appdbimpl) GetListLikes(id_photo int64) ([]Like, error) {
 	}
 	return likes, nil
 }
+
 // create a like in database
 func (db *appdbimpl) LikePhoto(photo_id int64, user User) error {
-	
+
 	_, err := db.c.Exec(`INSERT INTO likes(id_photo, id_user) VALUES(?, ?)`, photo_id, user.ID)
 	if err != nil {
 		return err
@@ -30,9 +31,10 @@ func (db *appdbimpl) LikePhoto(photo_id int64, user User) error {
 	return nil
 
 }
+
 // delete a like in database
 func (db *appdbimpl) UnlikePhoto(like Like) error {
-	
+
 	_, err := db.c.Exec(`DELETE FROM likes WHERE id_photo = ? AND id_user = ?`, like.ID_photo, like.ID_user)
 	if err != nil {
 		return err
@@ -40,5 +42,3 @@ func (db *appdbimpl) UnlikePhoto(like Like) error {
 	return nil
 
 }
-
-

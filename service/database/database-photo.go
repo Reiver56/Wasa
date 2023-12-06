@@ -37,12 +37,12 @@ func (db *appdbimpl) UploadPhoto(p Photo) (int64, error) {
 
 	res, err := db.c.Exec(`INSERT INTO photo(user_id, date) VALUES(?, ?)`, p.User_ID, p.Date)
 	if err != nil {
-		return -1,err
+		return -1, err
 	}
 	photo_id, err := res.LastInsertId()
 
 	if err != nil {
-		return -1,err
+		return -1, err
 	}
 
 	return photo_id, nil
@@ -62,7 +62,7 @@ func (db *appdbimpl) DeletePhoto(user_id string, id_photo int64) error {
 // get a photo in database
 func (db *appdbimpl) GetPhoto(tphoto_id int64, id_req string) (Photo, error) {
 	var photo Photo
-	err := db.c.QueryRow(`SELECT * FROM photo WHERE id_photo = ? AND user_id NOT IN (SELECT banner FROM ban WHERE banned = ? ) `, tphoto_id, id_req ).Scan(&photo)
+	err := db.c.QueryRow(`SELECT * FROM photo WHERE id_photo = ? AND user_id NOT IN (SELECT banner FROM ban WHERE banned = ? ) `, tphoto_id, id_req).Scan(&photo)
 	if err != nil {
 		return photo, err
 	}

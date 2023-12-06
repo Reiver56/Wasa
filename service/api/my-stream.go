@@ -4,12 +4,13 @@ import (
 	"Wasa-photo-1905917/service/api/reqcontext"
 	"Wasa-photo-1905917/service/database"
 	"encoding/json"
-	"net/http"
 	"github.com/julienschmidt/httprouter"
-
+	"net/http"
 )
+
 const PHOTO_IN_HOME = 3
-func (rt *_router) myStream(w http.ResponseWriter, r *http.Request, ps httprouter.Params, ctx reqcontext.RequestContext){
+
+func (rt *_router) myStream(w http.ResponseWriter, r *http.Request, ps httprouter.Params, ctx reqcontext.RequestContext) {
 	w.Header().Set("Content-Type", "application/json")
 	id := ps.ByName("id")
 	auth := r.Header.Get("Authorization")
@@ -36,7 +37,7 @@ func (rt *_router) myStream(w http.ResponseWriter, r *http.Request, ps httproute
 			return
 		}
 		for i, photo := range followerPhotos {
-			if i >= PHOTO_IN_HOME{
+			if i >= PHOTO_IN_HOME {
 				break
 			}
 			photos = append(photos, photo)

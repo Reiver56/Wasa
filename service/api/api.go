@@ -48,6 +48,7 @@ import (
 
 // Config is used to provide dependencies and configuration to the New function.
 var photoFolder = filepath.Join("./tmp", "photos")
+
 type Config struct {
 	// Logger where log entries are sent
 	Logger logrus.FieldLogger

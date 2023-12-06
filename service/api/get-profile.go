@@ -4,8 +4,8 @@ import (
 	"Wasa-photo-1905917/service/api/reqcontext"
 	"Wasa-photo-1905917/service/database"
 	"encoding/json"
-	"net/http"
 	"github.com/julienschmidt/httprouter"
+	"net/http"
 )
 
 func (rt *_router) getProfile(w http.ResponseWriter, r *http.Request, ps httprouter.Params, ctx reqcontext.RequestContext) {
@@ -38,13 +38,11 @@ func (rt *_router) getProfile(w http.ResponseWriter, r *http.Request, ps httprou
 	}
 
 	// control if user requested is user banned
-	if rt.db.IsBanned(req_user, id_user){
+	if rt.db.IsBanned(req_user, id_user) {
 		w.WriteHeader(http.StatusForbidden)
 		ctx.Logger.Errorf("user is banned")
 		return
 	}
-
-
 
 	followers, _ = rt.db.GetFollow(id_user)
 	following, _ = rt.db.GetFollowing(id_user)
@@ -53,14 +51,12 @@ func (rt *_router) getProfile(w http.ResponseWriter, r *http.Request, ps httprou
 
 	w.WriteHeader(http.StatusOK)
 	_ = json.NewEncoder(w).Encode(Profile{
-		User_id:        id_user,
+		User_id:   id_user,
 		Nickname:  nickname,
 		Followers: followers,
 		Following: following,
 		Photos:    photos,
 	})
-
-
 
 	// control if user that requesting the profile is banned from the user that owns the profile
 

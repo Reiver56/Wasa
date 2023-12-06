@@ -4,13 +4,13 @@ import (
 	"Wasa-photo-1905917/service/api/reqcontext"
 	"bytes"
 	"encoding/json"
+	"github.com/julienschmidt/httprouter"
 	"io"
 	"net/http"
 	"os"
 	"path/filepath"
 	"strconv"
 	"time"
-	"github.com/julienschmidt/httprouter"
 )
 
 // Function that set a new user's nickname

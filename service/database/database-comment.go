@@ -26,19 +26,19 @@ func (db *appdbimpl) PostComment(id_photo int64, id_user string, c Comment) (int
 
 	res, err := db.c.Exec(`INSERT INTO comments(id_photo, id_user, comment) VALUES(?, ?, ?)`, id_photo, id_user, c.Text_comment)
 	if err != nil {
-		return -1,err
+		return -1, err
 	}
 	comment_id, err := res.LastInsertId()
 
 	if err != nil {
-		return -1,err
+		return -1, err
 	}
 
 	return comment_id, nil
 
 }
 
-func (db *appdbimpl) DeleteComment(id_photo int64, id_user string, id_comment int64) (error) {
+func (db *appdbimpl) DeleteComment(id_photo int64, id_user string, id_comment int64) error {
 
 	_, err := db.c.Exec(`DELETE FROM comments WHERE (id_comment = ?, id_photo = ?, id_user = ?)`, id_photo, id_user, id_comment)
 	if err != nil {

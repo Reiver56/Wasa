@@ -2,9 +2,9 @@ package api
 
 import (
 	"Wasa-photo-1905917/service/api/reqcontext"
+	"github.com/julienschmidt/httprouter"
 	"net/http"
 	"strconv"
-	"github.com/julienschmidt/httprouter"
 )
 
 // Function that set a new user's nickname
@@ -39,7 +39,6 @@ func (rt *_router) likePhoto(w http.ResponseWriter, r *http.Request, ps httprout
 		return
 	}
 
-
 	var user_photo User
 	user_photo.ID = id_user_photo
 	var user_like User
@@ -51,23 +50,6 @@ func (rt *_router) likePhoto(w http.ResponseWriter, r *http.Request, ps httprout
 		return
 	}
 
-
-
-
-
-
-
-
 	w.WriteHeader(http.StatusNoContent)
 
-
-
-
-
 }
-
-
-
-
-
-

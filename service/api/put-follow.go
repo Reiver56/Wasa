@@ -1,11 +1,12 @@
 package api
+
 import (
 	"Wasa-photo-1905917/service/api/reqcontext"
-	"net/http"
 	"github.com/julienschmidt/httprouter"
+	"net/http"
 )
 
-func (rt *_router) followUser(w http.ResponseWriter, r *http.Request, ps httprouter.Params, ctx reqcontext.RequestContext){
+func (rt *_router) followUser(w http.ResponseWriter, r *http.Request, ps httprouter.Params, ctx reqcontext.RequestContext) {
 	w.Header().Set("Content-Type", "application/json")
 
 	auth := r.Header.Get("Authorization")
@@ -39,7 +40,7 @@ func (rt *_router) followUser(w http.ResponseWriter, r *http.Request, ps httprou
 		return
 	}
 
-	if rt.db.IsBanned(user_req.ID, user.ID){
+	if rt.db.IsBanned(user_req.ID, user.ID) {
 		w.WriteHeader(http.StatusForbidden)
 		ctx.Logger.Errorf("user is banned")
 		return
@@ -52,7 +53,5 @@ func (rt *_router) followUser(w http.ResponseWriter, r *http.Request, ps httprou
 		return
 	}
 	w.WriteHeader(http.StatusOK)
-
-
 
 }

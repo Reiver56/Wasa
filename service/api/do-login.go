@@ -3,8 +3,8 @@ package api
 import (
 	"Wasa-photo-1905917/service/api/reqcontext"
 	"encoding/json"
-	"net/http"
 	"github.com/julienschmidt/httprouter"
+	"net/http"
 )
 
 /*
@@ -42,7 +42,6 @@ func (rt *_router) doLogin(w http.ResponseWriter, r *http.Request, ps httprouter
 	}
 	if !exist {
 
-
 		err := rt.db.CreateUser(user.ToDatabase())
 		if err != nil {
 			ctx.Logger.WithError(err).Error("can't create user")
@@ -56,7 +55,6 @@ func (rt *_router) doLogin(w http.ResponseWriter, r *http.Request, ps httprouter
 			w.WriteHeader(http.StatusInternalServerError)
 			return
 		}
-
 
 		w.WriteHeader(http.StatusCreated)
 
@@ -84,12 +82,4 @@ func (rt *_router) doLogin(w http.ResponseWriter, r *http.Request, ps httprouter
 		return
 	}
 
-
-
 }
-
-
-
-
-
-

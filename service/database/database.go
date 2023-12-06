@@ -54,7 +54,7 @@ type AppDatabase interface {
 	GetNickname(id string) (string, error)
 
 	// Check if the user exist in the database
-	CheckUser(user User) (bool)
+	CheckUser(user User) bool
 
 	// Get personal stream
 	GetMyStream(user User) ([]Photo, error)
@@ -102,7 +102,7 @@ type AppDatabase interface {
 	PostComment(id_photo int64, id_user string, c Comment) (int64, error)
 
 	// Delete a comment to a photo
-	DeleteComment(id_photo int64, id_user string, id_comment int64) (error)
+	DeleteComment(id_photo int64, id_user string, id_comment int64) error
 
 	// Ban a user
 	BanUser(banner User, banned User) error
@@ -111,14 +111,13 @@ type AppDatabase interface {
 	UnbanUser(banner User, banned User) error
 
 	// Check if a user is banned
-	IsBanned(id_banned string, id_banner string ) (bool)
-
+	IsBanned(id_banned string, id_banner string) bool
 
 	// Ping the database to check if is alive
 	Ping() error
 }
 type appdbimpl struct {
-	c   *sql.DB
+	c *sql.DB
 }
 
 // New returns a new instance of AppDatabase based on the SQLite connection `db`.

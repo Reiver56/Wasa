@@ -2,8 +2,8 @@ package api
 
 import (
 	"Wasa-photo-1905917/service/api/reqcontext"
-	"net/http"
 	"github.com/julienschmidt/httprouter"
+	"net/http"
 )
 
 // Function that set a new user's nickname
@@ -12,7 +12,7 @@ func (rt *_router) banUser(w http.ResponseWriter, r *http.Request, ps httprouter
 	banner := ps.ByName("id")
 	control := r.Header.Get("Authorization")
 	banned := ps.ByName("banned_id")
-	
+
 	if banner == "" {
 		w.WriteHeader(http.StatusBadRequest)
 		ctx.Logger.Errorf("user not logged in")
@@ -30,18 +30,13 @@ func (rt *_router) banUser(w http.ResponseWriter, r *http.Request, ps httprouter
 	b1.ID = banner
 	b2.ID = banned
 
-	err := rt.db.BanUser(b1.ToDatabase(),b2.ToDatabase())
+	err := rt.db.BanUser(b1.ToDatabase(), b2.ToDatabase())
 	if err != nil {
 		w.WriteHeader(http.StatusInternalServerError)
 		ctx.Logger.Errorf("Error banning user: %v", err)
 		return
 	}
 
-
 	w.WriteHeader(http.StatusNoContent)
-
-
-
-
 
 }

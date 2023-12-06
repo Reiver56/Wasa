@@ -40,7 +40,6 @@ func (rt *_router) unlikePhoto(w http.ResponseWriter, r *http.Request, ps httpro
 		return
 	}
 
-
 	var like Like
 	like.User = id_like_user
 	like.ID_photo = photo_id

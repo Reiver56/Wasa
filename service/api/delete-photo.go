@@ -2,11 +2,11 @@ package api
 
 import (
 	"Wasa-photo-1905917/service/api/reqcontext"
+	"github.com/julienschmidt/httprouter"
 	"net/http"
 	"os"
 	"path/filepath"
 	"strconv"
-	"github.com/julienschmidt/httprouter"
 )
 
 // Function that delete a photo from database
@@ -47,13 +47,4 @@ func (rt *_router) deletePhoto(w http.ResponseWriter, r *http.Request, ps httpro
 	}
 	w.WriteHeader(http.StatusOK)
 
-
-
-
 }
-
-
-
-
-
-

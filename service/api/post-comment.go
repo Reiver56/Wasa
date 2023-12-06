@@ -3,12 +3,12 @@ package api
 import (
 	"Wasa-photo-1905917/service/api/reqcontext"
 	"encoding/json"
+	"github.com/julienschmidt/httprouter"
 	"net/http"
 	"strconv"
-	"github.com/julienschmidt/httprouter"
 )
 
-func (rt *_router) commentPhoto(w http.ResponseWriter, r *http.Request, ps httprouter.Params, ctx reqcontext.RequestContext){
+func (rt *_router) commentPhoto(w http.ResponseWriter, r *http.Request, ps httprouter.Params, ctx reqcontext.RequestContext) {
 	w.Header().Set("Content-Type", "application/json")
 
 	auth := r.Header.Get("Authorization")
@@ -25,8 +25,7 @@ func (rt *_router) commentPhoto(w http.ResponseWriter, r *http.Request, ps httpr
 		return
 	}
 
-
-	if rt.db.IsBanned(user_comment.ID, user_photo.ID){
+	if rt.db.IsBanned(user_comment.ID, user_photo.ID) {
 		w.WriteHeader(http.StatusForbidden)
 		ctx.Logger.Errorf("user banned")
 		return
@@ -46,8 +45,6 @@ func (rt *_router) commentPhoto(w http.ResponseWriter, r *http.Request, ps httpr
 	comment.ID_user = user_comment.ID
 	comment.ID_photo = id_photo_int
 
-
-
 	id_comment, err := rt.db.PostComment(id_photo_int, user_comment.ID, comment.ToDatabase())
 	if err != nil {
 		w.WriteHeader(http.StatusInternalServerError)
@@ -62,6 +59,5 @@ func (rt *_router) commentPhoto(w http.ResponseWriter, r *http.Request, ps httpr
 		ctx.Logger.Errorf("error encoding response: %v", err)
 		return
 	}
-
 
 }
