@@ -11,12 +11,17 @@ import (
 func (rt *_router) commentPhoto(w http.ResponseWriter, r *http.Request, ps httprouter.Params, ctx reqcontext.RequestContext) {
 	w.Header().Set("Content-Type", "application/json")
 
-	auth := r.Header.Get("Authorization")
+	auth := ctx.UserID
 
-	var user_comment User
-	user_comment.ID = auth
 	var user_photo User
 	user_photo.ID = ps.ByName("id")
+
+	// check if user is authorized
+	if user_photo.ID != auth {
+		w.WriteHeader(http.StatusForbidden)
+		return
+	}
+
 	id_photo := ps.ByName("photo_id")
 	id_photo_int, err := strconv.ParseInt(id_photo, 10, 64)
 	if err != nil {
@@ -25,7 +30,7 @@ func (rt *_router) commentPhoto(w http.ResponseWriter, r *http.Request, ps httpr
 		return
 	}
 
-	if rt.db.IsBanned(user_comment.ID, user_photo.ID) {
+	if rt.db.IsBanned(auth, user_photo.ID) {
 		w.WriteHeader(http.StatusForbidden)
 		ctx.Logger.Errorf("user banned")
 		return
@@ -42,10 +47,10 @@ func (rt *_router) commentPhoto(w http.ResponseWriter, r *http.Request, ps httpr
 		ctx.Logger.Errorf("comment not valid: %v", err)
 		return
 	}
-	comment.ID_user = user_comment.ID
+	comment.ID_user = auth
 	comment.ID_photo = id_photo_int
 
-	id_comment, err := rt.db.PostComment(id_photo_int, user_comment.ID, comment.ToDatabase())
+	id_comment, err := rt.db.PostComment(id_photo_int, auth, comment.ToDatabase())
 	if err != nil {
 		w.WriteHeader(http.StatusInternalServerError)
 		ctx.Logger.Errorf("error posting comment: %v", err)

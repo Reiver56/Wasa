@@ -12,11 +12,12 @@ import (
 // Function that delete a photo from database
 func (rt *_router) deletePhoto(w http.ResponseWriter, r *http.Request, ps httprouter.Params, ctx reqcontext.RequestContext) {
 	w.Header().Set("Content-Type", "application/json")
-	auth := r.Header.Get("Authorization")
+
+	auth := ctx.UserID
 	id_user_photo := ps.ByName("id")
+
 	if auth != id_user_photo {
-		w.WriteHeader(http.StatusUnauthorized)
-		ctx.Logger.Errorf("user not logged in")
+		w.WriteHeader(http.StatusForbidden)
 		return
 	}
 	id_photo := ps.ByName("photo_id")

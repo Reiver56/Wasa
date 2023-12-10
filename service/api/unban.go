@@ -12,17 +12,13 @@ func (rt *_router) unbanUser(w http.ResponseWriter, r *http.Request, ps httprout
 	banner := ps.ByName("id")
 	banned := ps.ByName("banned_id")
 
-	if banner == "" {
-		w.WriteHeader(http.StatusBadRequest)
-		ctx.Logger.Errorf("user not logged in")
+	userID := ctx.UserID
+
+	if banner != userID {
+		w.WriteHeader(http.StatusForbidden)
 		return
 	}
 
-	if banner == banned {
-		w.WriteHeader(http.StatusBadRequest)
-		ctx.Logger.Errorf("user cannot ban himself")
-		return
-	}
 	// define banner (with b1) and banned (with b2)
 	var b1 User
 	var b2 User

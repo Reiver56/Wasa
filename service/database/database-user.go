@@ -3,7 +3,6 @@ package database
 import (
 	"database/sql"
 	"errors"
-
 )
 
 // Database fuction that add a new user in database
@@ -37,7 +36,7 @@ var query_GETUSER = `SELECT id,nickname FROM users WHERE nickname = ?`
 // Get user object from database
 func (db *appdbimpl) GetUser(nickname string) (User, error) {
 	var user User
-	err := db.c.QueryRow(query_GETUSER, nickname).Scan(&user.ID,&user.Nickname)
+	err := db.c.QueryRow(query_GETUSER, nickname).Scan(&user.ID, &user.Nickname)
 	return user, err
 }
 
