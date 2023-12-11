@@ -1,0 +1,3 @@
+<script>
+	props: []
+</script>
