@@ -2,8 +2,9 @@ package api
 
 import (
 	"Wasa-photo-1905917/service/api/reqcontext"
-	"github.com/julienschmidt/httprouter"
 	"net/http"
+
+	"github.com/julienschmidt/httprouter"
 )
 
 func (rt *_router) followUser(w http.ResponseWriter, r *http.Request, ps httprouter.Params, ctx reqcontext.RequestContext) {
@@ -19,23 +20,19 @@ func (rt *_router) followUser(w http.ResponseWriter, r *http.Request, ps httprou
 	// define two users: user_req is the user that is logged in and user is the user that is going to be followed
 	var user_req User
 	user_req.ID = ps.ByName("id")
-	var user User
-	user.ID = ps.ByName("follow_id")
 
-	if user.ID == "" {
-		w.WriteHeader(http.StatusBadRequest)
-		ctx.Logger.Errorf("error getting user id")
-		return
-	}
-
-	if user_req.ID == user.ID {
+	if user_req.ID != ctx.UserID {
 		w.WriteHeader(http.StatusBadRequest)
 		ctx.Logger.Errorf("error following user")
 		return
 	}
-	if user_req.ID == "" {
+
+	var user User
+	user.ID = ps.ByName("follow_id")
+
+	if user_req.ID == user.ID {
 		w.WriteHeader(http.StatusBadRequest)
-		ctx.Logger.Errorf("error getting user id")
+		ctx.Logger.Errorf("error following user")
 		return
 	}
 

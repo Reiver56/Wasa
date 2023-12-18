@@ -1,0 +1,3 @@
+<script>
+export deaful
+</script>

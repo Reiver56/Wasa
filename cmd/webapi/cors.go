@@ -14,7 +14,7 @@ func applyCORSHandler(h http.Handler) http.Handler {
 			"x-example-header",
 		}),
 		handlers.AllowedMethods([]string{"GET", "POST", "OPTIONS", "DELETE", "PUT"}),
-		handlers.AllowedHeaders([]string {"Content-Type", "Authorization", "X-Requested-With", "Accept", "Origin"}),
+		handlers.AllowedHeaders([]string{"Content-Type", "Authorization", "X-Requested-With", "Accept", "Origin"}),
 		handlers.ExposedHeaders([]string{"Autorization"}),
 		handlers.AllowedOrigins([]string{"*"}),
 		handlers.AllowCredentials(),
