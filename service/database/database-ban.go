@@ -4,6 +4,35 @@ import (
 	"errors"
 )
 
+/*
+GetBans returns the list of users banned by the user with the given ID.
+*/
+func (db *appdbimpl) GetBans(bannerID string) ([]User, error) {
+	var bans []User
+	rows, err := db.c.Query("SELECT banner FROM banned WHERE banned = ? ", bannerID)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+	for rows.Next() {
+		if rows.Err() != nil {
+			return nil, err
+		}
+		var banID string
+		err = rows.Scan(&banID)
+		if err != nil {
+			return nil, err
+		}
+		ban, err := db.GetUser(banID)
+		if err != nil {
+			return nil, err
+		}
+		bans = append(bans, ban)
+	}
+
+	return bans, nil
+}
+
 // insert ban in the database, with the banner and the banned
 func (db *appdbimpl) BanUser(banner User, banned User) error {
 	if db.CheckUser(banner) {

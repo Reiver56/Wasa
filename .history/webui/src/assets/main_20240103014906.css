@@ -1,0 +1,7 @@
+:root{
+	--color-text: gainsboro;
+}
+
+html, body {
+	height: 100%;
+}

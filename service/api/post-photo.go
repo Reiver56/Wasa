@@ -32,7 +32,9 @@ func (rt *_router) uploadPhoto(w http.ResponseWriter, r *http.Request, ps httpro
 	var photo Photo
 
 	photo.User_ID = id_user_photo
+
 	photo.Date = time.Now().UTC()
+
 	// -----------------
 
 	// create copy of body
@@ -40,6 +42,12 @@ func (rt *_router) uploadPhoto(w http.ResponseWriter, r *http.Request, ps httpro
 	if err != nil {
 		ctx.Logger.WithError(err).Error("error reading body")
 		w.WriteHeader(http.StatusInternalServerError)
+		return
+	}
+	filetype := http.DetectContentType(data)
+	if filetype != "image/jpeg" && filetype != "image/png" {
+		ctx.Logger.WithError(err).Error("invalid image format")
+		w.WriteHeader(http.StatusBadRequest)
 		return
 	}
 
@@ -71,6 +79,7 @@ func (rt *_router) uploadPhoto(w http.ResponseWriter, r *http.Request, ps httpro
 		w.WriteHeader(http.StatusInternalServerError)
 		return
 	}
+
 	out, err := os.Create(filepath.Join(photoPath, photo_id))
 	if err != nil {
 		ctx.Logger.WithError(err).Error("error creating photo")

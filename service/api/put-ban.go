@@ -6,7 +6,6 @@ import (
 	"net/http"
 )
 
-// Function that set a new user's nickname
 func (rt *_router) banUser(w http.ResponseWriter, r *http.Request, ps httprouter.Params, ctx reqcontext.RequestContext) {
 
 	banner := ps.ByName("id")

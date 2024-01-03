@@ -4,8 +4,9 @@ import (
 	"Wasa-photo-1905917/service/api/reqcontext"
 	"Wasa-photo-1905917/service/database"
 	"encoding/json"
-	"github.com/julienschmidt/httprouter"
 	"net/http"
+
+	"github.com/julienschmidt/httprouter"
 )
 
 const PHOTO_IN_HOME = 3
@@ -18,7 +19,7 @@ func (rt *_router) myStream(w http.ResponseWriter, r *http.Request, ps httproute
 		w.WriteHeader(http.StatusForbidden)
 		return
 	}
-	followers, err := rt.db.GetFollow(id)
+	followers, err := rt.db.GetFollowing(id)
 	if err != nil {
 		w.WriteHeader(http.StatusInternalServerError)
 		ctx.Logger.Errorf("error getting followers: %v", err)
@@ -28,8 +29,10 @@ func (rt *_router) myStream(w http.ResponseWriter, r *http.Request, ps httproute
 	var followerPhotos []database.Photo
 	var follower database.User
 	follower.ID = id
+
 	for _, follower := range followers {
 		followerPhotos, err = rt.db.GetListPhoto(follower.ID)
+
 		if err != nil {
 			w.WriteHeader(http.StatusInternalServerError)
 			ctx.Logger.Errorf("error getting photos: %v", err)

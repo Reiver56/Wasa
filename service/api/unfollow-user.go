@@ -11,15 +11,15 @@ func (rt *_router) unfollowUser(w http.ResponseWriter, r *http.Request, ps httpr
 	identifier := ps.ByName("id")
 	auth := ctx.UserID
 
-	if identifier != auth {
+	var user_req User
+	user_req.ID = identifier
+	var user User
+	user.ID = ps.ByName("follow_id")
+
+	if user.ID != auth {
 		w.WriteHeader(http.StatusForbidden)
 		return
 	}
-
-	var user_req User
-	user_req.ID = auth
-	var user User
-	user.ID = ps.ByName("follow_id")
 
 	if user.ID == "" {
 		w.WriteHeader(http.StatusBadRequest)
@@ -44,7 +44,7 @@ func (rt *_router) unfollowUser(w http.ResponseWriter, r *http.Request, ps httpr
 		return
 	}
 
-	err := rt.db.Unfollow(user_req.ID, user.ID)
+	err := rt.db.Unfollow(user.ID, user_req.ID)
 
 	if err != nil {
 		w.WriteHeader(http.StatusInternalServerError)

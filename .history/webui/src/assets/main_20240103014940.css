@@ -1,0 +1,15 @@
+:root{
+	--color-text: gainsboro;
+}
+
+html, body {
+	height: 100%;
+}
+
+body {
+	background-color: #d9d6d6;
+	color: var(--color-text);
+	font-family: 'Roboto', sans-serif;
+	font-size: 16px;
+	margin: 0;
+}
