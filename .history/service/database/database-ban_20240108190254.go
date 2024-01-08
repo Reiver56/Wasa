@@ -9,7 +9,7 @@ GetBans returns the list of users banned by the user with the given ID.
 */
 func (db *appdbimpl) GetBans(bannerID string) ([]User, error) {
 	var bans []User
-	rows, err := db.c.Query("SELECT banned FROM banned WHERE banner = ? ", bannerID)
+	rows, err := db.c.Query("SELECT banned FROM banner WHERE banner = ? ", bannerID)
 	if err != nil {
 		return nil, err
 	}

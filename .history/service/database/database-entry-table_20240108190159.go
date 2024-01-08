@@ -64,7 +64,7 @@ var FollowTable = `CREATE TABLE IF NOT EXISTS follow
 
 var BanTable = `CREATE TABLE IF NOT EXISTS banned
 (
-		banner VARCHAR(16) NOT NULL,
+		
 		banned VARCHAR(16) NOT NULL,
 		PRIMARY KEY (banned, banner),
 		FOREIGN KEY (banned) REFERENCES users(id) ON DELETE CASCADE,

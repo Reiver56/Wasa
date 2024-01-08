@@ -461,6 +461,7 @@ export default {
 	justify-content: flex-end;
 	align-items: center;
 	padding-right: 10px;
+	top: 100px;
 }
 .list-of-users-header button{
 	border: none;
@@ -478,8 +479,9 @@ export default {
 	flex-direction: column;
 	justify-content: flex-start;
 	align-items: center;
+	padding-top: 100px;
 	border: 10px;
-	border-radius: 30px;
+	border-radius: 50px;
 }
 .list-of-users-item{
 	background-color: rgb(225, 225, 225);
@@ -633,7 +635,6 @@ export default {
 	justify-content: flex-start;
 	align-items: center;
 	padding-top: 50px;
-	box-shadow: 0.2em 0.2em 0.2em 0.2em rgba(176, 179, 184, 0.50);
 }
 .option-menu-item{
 	width: 100%;

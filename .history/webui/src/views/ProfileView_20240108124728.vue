@@ -633,7 +633,6 @@ export default {
 	justify-content: flex-start;
 	align-items: center;
 	padding-top: 50px;
-	box-shadow: 0.2em 0.2em 0.2em 0.2em rgba(176, 179, 184, 0.50);
 }
 .option-menu-item{
 	width: 100%;

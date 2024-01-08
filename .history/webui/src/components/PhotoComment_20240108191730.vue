@@ -10,7 +10,7 @@ export default {
 
     methods:{
         async deleteComment(){
-			// console.log(localStorage.token)
+			
             try{
                 await this.$axios.delete(`users/${this.photo_owner}/photos/${this.photo_id}/comments/${this.comment_id}`, {
 					headers: {

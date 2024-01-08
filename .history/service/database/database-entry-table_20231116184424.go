@@ -1,8 +1,0 @@
-package database
-
-
-//  ---------User Table----------------
-
-
-
-

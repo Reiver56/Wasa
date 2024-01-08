@@ -76,13 +76,13 @@
 		</div>
 
 		<div class="list-of-users" v-if="showList === true" aria-hidden="true" tabindex="-1">
-			<div class="list-of-users-container">
-				<div class="list-of-users-header">
-					<div class="close-button-container">
-						<button @click="freeLists" class="btn close-b-btn"><font-awesome-icon :icon="['far', 'times-circle']" /></button>
-					</div>
-				</div>
 
+
+
+			<div class="list-of-users-container">
+				<div class="close-button-container">
+					<button @click="freeLists" class="btn close-b-btn"><font-awesome-icon :icon="['far', 'times-circle']" /></button>
+				</div>
 				<div v-for="user in usersArray" class="list-of-users-item">
 					<div class="list-of-users-item-left">
 						<font-awesome-icon icon="fa-solid fa-user" />
@@ -422,12 +422,12 @@ export default {
 }
 
 .close-button-container{
+	top: 45px;
 	width: auto;
 	height: auto;
 	display: flex;
 	justify-content: flex-end;
 	align-items: center;
-
 }
 .close-b-btn{
 	background-color: transparent;
@@ -450,17 +450,13 @@ export default {
 	cursor: pointer;
 }
 
-.my-btn-add-photo:hover{
-	background-color: white;
-	color: black;
-}
 .list-of-users-header{
-	width: 100%;
-	height: 50px;
+	height: 70px;
+	width: -10px;
 	display: flex;
-	justify-content: flex-end;
+	justify-content: flex-start;
 	align-items: center;
-	padding-right: 10px;
+	padding-left: 10px;
 }
 .list-of-users-header button{
 	border: none;
@@ -478,14 +474,15 @@ export default {
 	flex-direction: column;
 	justify-content: flex-start;
 	align-items: center;
+	padding-top: 100px;
 	border: 10px;
-	border-radius: 30px;
+	border-radius: 50px;
 }
 .list-of-users-item{
 	background-color: rgb(225, 225, 225);
-	border-radius: 22px;
-	width: 55%;
-	height: 55px;
+	border-radius: 25px;
+	width: 50%;
+	height: 50px;
 	display: flex;
 	justify-content: flex-start;
 	align-items: center;
@@ -633,7 +630,6 @@ export default {
 	justify-content: flex-start;
 	align-items: center;
 	padding-top: 50px;
-	box-shadow: 0.2em 0.2em 0.2em 0.2em rgba(176, 179, 184, 0.50);
 }
 .option-menu-item{
 	width: 100%;

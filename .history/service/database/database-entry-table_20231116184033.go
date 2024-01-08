@@ -1,1 +1,0 @@
-//  crreare delle tabelle per og
