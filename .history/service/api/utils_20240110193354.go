@@ -4,6 +4,7 @@ import (
 	"Wasa-photo-1905917/service/api/reqcontext"
 	"fmt"
 	"os"
+	"path/filepath"
 )
 
 func createFolder(id_user string, ctx reqcontext.RequestContext) error {
@@ -14,3 +15,4 @@ func createFolder(id_user string, ctx reqcontext.RequestContext) error {
 	}
 	return nil
 }
+
