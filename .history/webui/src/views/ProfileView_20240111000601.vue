@@ -17,14 +17,14 @@
 					</button>
 				</div>
 				<div class="option-menu-item" >
-					<button @click="doLogout" class="btn btn-option"><font-awesome-icon icon="fa-solid fa-sign-out" />
+					<button @click="doLogout" class="btn"><font-awesome-icon icon="fa-solid fa-sign-out" />
 						<span>Logout</span>
 					</button>
 				</div>
 			</div>
 			<div v-else-if="options" class="option-container-menu">
 				<div class="option-menu-item" >
-					<button @click="banUser" class="btn btn-option"><font-awesome-icon icon="fa-solid fa-ban" />
+					<button @click="banUser" class="btn"><font-awesome-icon icon="fa-solid fa-ban" />
 						<span>Ban User</span>
 					</button>
 				</div>
@@ -398,13 +398,6 @@ export default {
 <style>
 
 
-.btn-option{
-	background-color: transparent;
-	border: none;
-	color: black;
-	font-size: 15px;
-	cursor: pointer;
-}
 
 .top-container-profile{
 	display: flex;

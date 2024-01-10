@@ -11,22 +11,23 @@
 				<font-awesome-icon icon="fa-solid fa-ellipsis-v" />
 			</button>
 			<div v-if="options && isOwner" class="option-container-menu">
+
 				<div class="option-menu-item" >
-					<button @click="getBans" class="btn btn-option"><font-awesome-icon icon="fa-solid fa-ban" />
-						<span>Banned Users</span>
-					</button>
+					<button @click="getBans" class="btn"><font-awesome-icon icon="fa-solid fa-ban"
+					<span>Banned Users</span></button>
+					</div>
 				</div>
 				<div class="option-menu-item" >
-					<button @click="doLogout" class="btn btn-option"><font-awesome-icon icon="fa-solid fa-sign-out" />
-						<span>Logout</span>
-					</button>
+					<button @click="doLogout" class="btn"><font-awesome-icon icon="fa-solid fa-sign-out" />
+					<span>Logout</span></button>
+
 				</div>
 			</div>
 			<div v-else-if="options" class="option-container-menu">
 				<div class="option-menu-item" >
-					<button @click="banUser" class="btn btn-option"><font-awesome-icon icon="fa-solid fa-ban" />
-						<span>Ban User</span>
-					</button>
+					<button @click="banUser" class="btn"><font-awesome-icon icon="fa-solid fa-ban" />
+					<span>Ban User</span></button>
+
 				</div>
 			</div>
 		</div>
@@ -398,13 +399,6 @@ export default {
 <style>
 
 
-.btn-option{
-	background-color: transparent;
-	border: none;
-	color: black;
-	font-size: 15px;
-	cursor: pointer;
-}
 
 .top-container-profile{
 	display: flex;

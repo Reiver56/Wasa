@@ -398,13 +398,6 @@ export default {
 <style>
 
 
-.btn-option{
-	background-color: transparent;
-	border: none;
-	color: black;
-	font-size: 15px;
-	cursor: pointer;
-}
 
 .top-container-profile{
 	display: flex;
