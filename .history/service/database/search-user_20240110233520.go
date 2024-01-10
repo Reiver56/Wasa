@@ -3,7 +3,7 @@ package database
 // return a list of matching users with u2 (that is the user that is searching)
 func (db *appdbimpl) GetUserProfile(u1 User, u2 User) ([]Profile, error) {
 
-	rows, err := db.c.Query(`SELECT * FROM users WHERE ((id LIKE ?) OR (nickname LIKE ?)) AND id NOT IN (SELECT banned FROM banned WHERE banner = ?)`, u2.ID+"%", u2.ID+"%", u1.ID)
+	rows, err := db.c.Query(`SELECT * FROM users WHERE ((id LIKE ?) OR (nickname LIKE ?)) AND id NOT IN (SELECT banned FROM banned WHERE banned = ?)`, u2.ID+"%", u2.ID+"%", u1.ID)
 	if err != nil {
 		return nil, err
 	}

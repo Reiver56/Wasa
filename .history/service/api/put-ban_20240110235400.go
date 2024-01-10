@@ -29,6 +29,7 @@ func (rt *_router) banUser(w http.ResponseWriter, r *http.Request, ps httprouter
 		return
 	}
 
+
 	// Ban implement unfollow from banned to banner (if exists)
 	err = rt.db.Unfollow(b1.ID, b2.ID)
 	if err != nil {
@@ -36,7 +37,7 @@ func (rt *_router) banUser(w http.ResponseWriter, r *http.Request, ps httprouter
 		ctx.Logger.Errorf("Error unfollowing user: %v", err)
 		return
 	}
-	// Ban implement unfollow from bannedr to banned (if exists)
+
 	err = rt.db.Unfollow(b2.ID, b1.ID)
 	if err != nil {
 		w.WriteHeader(http.StatusInternalServerError)
@@ -44,7 +45,6 @@ func (rt *_router) banUser(w http.ResponseWriter, r *http.Request, ps httprouter
 		return
 	}
 
-	// Response 204 No Content, if everything is ok (success)
 	w.WriteHeader(http.StatusNoContent)
 
 }
