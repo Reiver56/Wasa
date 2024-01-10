@@ -13,7 +13,8 @@ export default {
 			try{
 
 				console.log(this.comments_list)
-				let response = await this.$axios.post(`users/${this.photo_owner}/photos/${this.photo_id}/comments`,{
+					
+				let response = await this.$axios.post("/users/"+ this.photo_owner +"/photos/"+this.photo_id+"/comments",{
 					text: this.commentValue
 				},{
 					headers:{

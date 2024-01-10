@@ -8,7 +8,6 @@
 		<div class="row">
 			<Photo
 				v-for="(post,index) in posts"
-				:key="index"
 				:owner="post.user_id"
 				:photo_id="post.id"
 				:comments="post.comments != null ? post.comments : []"

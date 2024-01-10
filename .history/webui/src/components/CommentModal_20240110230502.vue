@@ -13,7 +13,10 @@ export default {
 			try{
 
 				console.log(this.comments_list)
-				let response = await this.$axios.post(`users/${this.photo_owner}/photos/${this.photo_id}/comments`,{
+				//`users/${localStorage.UserID}/mystream`
+				//"/users/"+ this.photo_owner +"/photos/"+this.photo_id+"/comments"
+				// `users/${this.photo_owner}/mystream`
+				let response = await this.$axios.post("/users/"+ this.photo_owner +"/photos/"+this.photo_id+"/comments",{
 					text: this.commentValue
 				},{
 					headers:{

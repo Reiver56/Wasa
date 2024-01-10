@@ -13,8 +13,7 @@ export default{
 					<button type="button" class="btn close-btn" data-bs-dismiss="modal" aria-label="Close"><font-awesome-icon :icon="['far', 'times-circle']" /></button>
 				</div>
 				<div class= "modal-body">
-					<UserMini v-for="(user,index) in likes"
-					:key="index"
+					<UserMini v-for="(user in likes"
 					:identifier="user.id_user"
 					/>
 

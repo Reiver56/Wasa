@@ -107,8 +107,9 @@
 
 		<div class = "posts-container">
 			<span v-if ="(posts.length == 0 )" class="no-posts">No posts</span>
-			<Photo v-for="(post,index) in posts"
-			:key="index"
+			<Photo v-for="(post in posts"
+			:key="post.id"
+
 			:owner="this.userID"
 			:photo_id="post.id"
 			:likes="post.likes"

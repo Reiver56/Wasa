@@ -14,7 +14,6 @@ export default{
 				</div>
 				<div class= "modal-body">
 					<UserMini v-for="(user,index) in likes"
-					:key="index"
 					:identifier="user.id_user"
 					/>
 

@@ -109,6 +109,7 @@
 			<span v-if ="(posts.length == 0 )" class="no-posts">No posts</span>
 			<Photo v-for="(post,index) in posts"
 			:key="index"
+
 			:owner="this.userID"
 			:photo_id="post.id"
 			:likes="post.likes"
