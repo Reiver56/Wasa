@@ -996,13 +996,13 @@ components:
       title: Users list
       description: List of users for followers, following, ban
       type: array
+      minItems: 0
+      maxItems: 100
       items:
         type: object
         description: User
         properties:
           user: {$ref: "#/components/schemas/complete_user"}
-      minItems: 0
-      maxItems: 100
 
 
 #.......................................................................................

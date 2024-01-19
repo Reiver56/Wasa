@@ -1001,8 +1001,7 @@ components:
         description: User
         properties:
           user: {$ref: "#/components/schemas/complete_user"}
-      minItems: 0
-      maxItems: 100
+          
 
 
 #.......................................................................................
