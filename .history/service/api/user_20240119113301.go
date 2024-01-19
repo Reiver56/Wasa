@@ -6,21 +6,23 @@ import (
 )
 
 // define structure of user object with all information
+
 type User struct {
 	ID       string `json:"id"`
 	Nickname string `json:"nickname"`
 }
 
-// covert user in api package in database package
+
 func (u *User) ToDatabase() database.User {
+	// covert user in api package in database package
 	return database.User{
 		ID:       u.ID,
 		Nickname: u.Nickname,
 	}
 }
 
-// convert user in database package in api package
 func (u *User) FromDatabase(User database.User) error {
+	// convert user in database package in api package
 	u.ID = User.ID
 	u.Nickname = User.Nickname
 	return nil

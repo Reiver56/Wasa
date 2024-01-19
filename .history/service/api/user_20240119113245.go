@@ -6,6 +6,7 @@ import (
 )
 
 // define structure of user object with all information
+
 type User struct {
 	ID       string `json:"id"`
 	Nickname string `json:"nickname"`
@@ -19,8 +20,8 @@ func (u *User) ToDatabase() database.User {
 	}
 }
 
-// convert user in database package in api package
 func (u *User) FromDatabase(User database.User) error {
+	// convert user in database package in api package
 	u.ID = User.ID
 	u.Nickname = User.Nickname
 	return nil

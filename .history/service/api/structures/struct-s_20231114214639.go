@@ -1,3 +1,0 @@
-package structures
-
-type Comment 

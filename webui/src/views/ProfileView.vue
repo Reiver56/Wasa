@@ -82,7 +82,7 @@
 					</div>
 				</div>
 
-				<div v-for="user in usersArray" class="list-of-users-item">
+				<div v-for="user in usersArray" :key="user.nickname" class="list-of-users-item">
 					<div class="list-of-users-item-left">
 						<font-awesome-icon icon="fa-solid fa-user" />
 					</div>
@@ -396,16 +396,6 @@ export default {
 
 
 <style>
-
-
-.btn-option{
-	background-color: transparent;
-	border: none;
-	color: black;
-	font-size: 15px;
-	cursor: pointer;
-}
-
 .top-container-profile{
 	display: flex;
 	flex-direction: column;
@@ -617,7 +607,7 @@ export default {
 	color: #3b9ee4;
 }
 .option-button{
-	background-color: transparent;
+	background-color: white;
 	border: none;
 	color: black;
 	font-size: 30px;
@@ -630,14 +620,14 @@ export default {
 	position: absolute;
 	top: 0;
 	right: 0;
-	width: 120px;
+	width: 150px;
 	height: 150px;
 	background-color: rgb(243, 243, 243);
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-start;
 	align-items: center;
-	padding-top: 50px;
+
 	box-shadow: 0.2em 0.2em 0.2em 0.2em rgba(176, 179, 184, 0.50);
 }
 .option-menu-item{
@@ -648,14 +638,17 @@ export default {
 	align-items: center;
 }
 .option-menu-item button{
-	background-color: transparent;
+	background-color: #3b9ee4;
+	width: 100%;
+	height: 100%;
 	border: none;
-	color: black;
+	color: white;
 	font-size: 15px;
 	cursor: pointer;
 }
 .option-menu-item button:hover{
 	color: #3b9ee4;
+	background-color: white;
 }
 .get-follow-button{
 	background-color: #3b9ee4;

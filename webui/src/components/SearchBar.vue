@@ -3,7 +3,7 @@
 		<input placeholder="Search users..." autoComplete="none" class="search-bar" v-model="searchQuery" @focusout="exitList" maxlength="16" spellcheck="false"/>
 		<div class="search-icon"><font-awesome-icon icon="fa-solid fa-search" /></div>
 		<div class="search-results" v-show="userList.length">
-			<SimpleProfileEntry v-for="user in userList" :key="user.userID" :data="user" @exit-from-list="exitList" />
+			<SimpleProfileEntry v-for="user in userList" :key="user.nickname" :data="user" @exit-from-list="exitList" />
 		</div>
 	</div>
 </template>
@@ -33,13 +33,13 @@ export default{
 			}
 			try {
 				let response = await this.$axios.get(`/users?search=${this.searchQuery}`, { headers: { 'Authorization': `${localStorage.token}` } })
-				if (response.data.length == 0){
+				if (response.data.length == null){
 					this.dataAvailable = false;
 					return;
 				}
-				console.log(response.data);
 				this.userList = [];
 				this.userList.push(...response.data);
+				console.log(this.userList);
 			}catch (error){
 				this.$emit('error-occurred', error.response.data.message);
 			}

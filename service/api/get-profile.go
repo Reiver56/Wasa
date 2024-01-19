@@ -44,6 +44,13 @@ func (rt *_router) getProfile(w http.ResponseWriter, r *http.Request, ps httprou
 		return
 	}
 
+	// control if user requested is user blocked
+	if rt.db.IsBanned(id_user, req_user) {
+		w.WriteHeader(http.StatusForbidden)
+		ctx.Logger.Errorf("user is banned")
+		return
+	}
+
 	followers, _ = rt.db.GetFollow(id_user)
 	following, _ = rt.db.GetFollowing(id_user)
 	photos, _ = rt.db.GetListPhoto(id_user)

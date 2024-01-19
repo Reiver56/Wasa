@@ -1,5 +1,0 @@
-<script>
-expo
-
-
-</script>

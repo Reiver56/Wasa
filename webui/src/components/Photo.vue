@@ -70,7 +70,8 @@ export default{
 
 		removeCommentFromList(value){
 			console.log("value "+ value);
-			this.Comments = this.Comments.filter(item=> item.comment_id !== value)
+			this.Comments = this.Comments.filter(obj => obj.id !== value);
+			console.log(this.Comments);
 		},
 
 		addCommentToList(comment){
@@ -106,7 +107,7 @@ export default{
 				:photo_owner="owner"
 				:photo_id="photo_id"
 
-				@eliminateComment="removeCommentFromList"
+				@delete-comment="removeCommentFromList"
 				@addComment="addCommentToList"
 		/>
 			<div class="user-my-user">

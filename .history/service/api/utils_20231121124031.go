@@ -1,3 +1,0 @@
-package api
-
-func checkFormat()

@@ -1,5 +1,0 @@
-<script>
-	props: {
-		data :  {}
-	}
-</script>

@@ -1,3 +1,0 @@
-<script>
-	pro
-</script>

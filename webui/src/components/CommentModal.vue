@@ -40,7 +40,7 @@ export default {
 
 		deleteComment(value){
 			this.$emit('delete-comment',value)
-			location.reload();
+			//location.reload();
 		},
 
 		addCommentToParent(newCommentJSON){

@@ -1,3 +1,0 @@
-<script>
-import { Rectagle}
-</script>
