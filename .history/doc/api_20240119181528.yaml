@@ -114,7 +114,7 @@ paths:
                       minItems: 0
                       maxItems: 100
                       items:
-                        $ref: "#/components/schemas/user_nickname"
+                        $ref: "#/components/schemas/user_nickname/properties/nickname"
 
         '401':
           $ref: "#/components/responses/Unauthorized"

@@ -114,7 +114,7 @@ paths:
                       minItems: 0
                       maxItems: 100
                       items:
-                        $ref: "#/components/schemas/user_nickname"
+                        $ref: "#/components/schemas/user_nickname/properties/nickname"
 
         '401':
           $ref: "#/components/responses/Unauthorized"
@@ -793,7 +793,7 @@ components:
         user_id:
           $ref: "#/components/schemas/username/properties/user_id"
         nickname:
-          $ref: "#/components/schemas/user_nickname/properties/nickname"
+          $ref: "#/components/schemas/user_nickname"
       example:
         user_id: "Mariotto11"
         nickname: "Mariotto11"

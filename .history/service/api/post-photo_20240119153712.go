@@ -32,9 +32,12 @@ func (rt *_router) uploadPhoto(w http.ResponseWriter, r *http.Request, ps httpro
 	var photo Photo
 
 	photo.User_ID = id_user_photo
+	// set a date for the photo
+	dataPost := time.Now()
+	dataFormat := dataPost.Format("2006-01-02 15:04:05")
+	photo.Date =
 
-	// set the date of the photo
-	photo.Date = time.Now().UTC()
+
 
 	// -----------------
 
