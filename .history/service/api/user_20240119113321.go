@@ -12,9 +12,8 @@ type User struct {
 	Nickname string `json:"nickname"`
 }
 
-
 func (u *User) ToDatabase() database.User {
-	
+
 	return database.User{
 		ID:       u.ID,
 		Nickname: u.Nickname,

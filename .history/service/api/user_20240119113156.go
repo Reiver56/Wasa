@@ -19,6 +19,7 @@ func (u *User) ToDatabase() database.User {
 		Nickname: u.Nickname,
 	}
 }
+
 // convert user in database package in api package
 func (u *User) FromDatabase(User database.User) error {
 	u.ID = User.ID

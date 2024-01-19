@@ -12,7 +12,6 @@ type User struct {
 	Nickname string `json:"nickname"`
 }
 
-
 func (u *User) ToDatabase() database.User {
 	// covert user in api package in database package
 	return database.User{
