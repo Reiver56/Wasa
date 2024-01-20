@@ -1,3 +1,10 @@
+/*
+doLogin handles the login request and creates a new user if it doesn't exist.
+It decodes the JSON from the request body into a User object and validates the user ID.
+If the user exists, it retrieves the user from the database and returns it.
+If the user doesn't exist, it creates a new user and returns it.
+*/
+
 package api
 
 import (
@@ -19,13 +26,13 @@ func (rt *_router) doLogin(w http.ResponseWriter, r *http.Request, ps httprouter
 	if err != nil {
 		w.WriteHeader(http.StatusBadRequest)
 		return
-	} else if !user.isValidID() {
-		// Validate User ID
+	} else if !user.isValidID() { // Validate User ID
 		w.WriteHeader(http.StatusBadRequest)
 		return
 	}
 
 	// Check if user exist and return them, if not exist create a new user
+
 	exist, err := rt.db.ExistUser(user.Nickname)
 	if err != nil {
 
@@ -72,7 +79,9 @@ func (rt *_router) doLogin(w http.ResponseWriter, r *http.Request, ps httprouter
 		User  User   `json:"user"`
 		Token string `json:"token"`
 	}
-	// In this case the authorization token is the userID
+	/*
+		in this case the authorization token is the userID
+	*/
 	authUser := AuthUser{user, user.ID}
 	// encode the AuthUser object in JSON and send it to the client
 	w.Header().Set("Content-type", "application/json")
