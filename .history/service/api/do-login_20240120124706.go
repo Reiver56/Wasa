@@ -9,7 +9,7 @@ import (
 
 /*
 doLogin handles the login request and creates a new user if it doesn't exist.
-It decodes the JSON from the request body into a User object and validates the user ID.
+ It decodes the JSON from the request body into a User object and validates the user ID.
 If the user exists, it retrieves the user from the database and returns it.
 If the user doesn't exist, it creates a new user and returns it.
 */
