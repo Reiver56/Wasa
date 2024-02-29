@@ -22,7 +22,7 @@ Nello specifico, le funzioni implentate sono le seguenti:
  * deletePhoto
 ***
 
-## Come avvaire Backend e Frontend (Linux & WSL)
+## Come avviare Backend e Frontend (Linux & WSL)
 ***
 * ATTENZIONE: Consiglio vivamente di utilizzare dei sistemi Linux oppure di utilizzare WSL (su Win10/Win11), in quanto i comandi che seguiranno sono specifici di Linux, almeno in parte.
 * CONSIGLIO: Se volete usare Windows 10/11, scaricate WSL, che vi permette di avere un sottosistema Ubuntu. Questo è molto comodo per evitare di installare un altro sistema operativo, inoltre, è 
